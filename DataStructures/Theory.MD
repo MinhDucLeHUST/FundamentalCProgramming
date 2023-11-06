@@ -97,11 +97,3 @@ Nếu có nhiều kiểu dữ liệu thì mỗi kiểu dữ liệu sẽ được
 
 - ![Ví dụ về cách cấp phát trong Bit fields](./ExamplePictures/bit_field_1.png)
 - ![Ví dụ về cách cấp phát trong Bit fields](./ExamplePictures/bit_field_2.png)
-
-```
-
-```
-
-```
-
-```
