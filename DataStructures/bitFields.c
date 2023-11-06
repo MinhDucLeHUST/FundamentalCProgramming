@@ -28,3 +28,5 @@ int main() {
     printf("Size of struct time: %ld bytes\n", sizeof(struct time));
     printf("Size of struct time: %ld bytes\n", sizeof(struct time_using_bitField));
 }
+
+// add
