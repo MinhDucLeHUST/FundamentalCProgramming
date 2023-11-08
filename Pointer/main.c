@@ -1,37 +1,34 @@
-#include <stdio.h>
+#include "stdio.h"
+#include "stdlib.h"
 
-void print(int *pointerArray, int sizeArray);
-void print1(char *pointerArray, int sizeArray);
+int number = 0;
 
 int main() {
-    int array1[5] = {11, 12, 13, 14, 15};
-    int array2[5] = {21, 22, 23, 24, 25};
-    int array3[5] = {31, 32, 33, 34, 35};
-
-    char *fullName[] = {
-        "Duc",
-        "Anh",
-        "Ronaldo"};
-
-    int *pointerArray[3];
-    pointerArray[0] = array1;
-    pointerArray[1] = array2;
-    pointerArray[2] = array3;
-    // print(fullName, 5);
-    for (int i = 0; i < 3; i++) {
-        printf("%s \n", fullName[i]);
+    int **p_to_p = NULL;
+    int col = 3, row = 4;
+    p_to_p = (int **)malloc(row * sizeof(int *));
+    // Cấp phát bộ nhớ cho từng con trỏ cấp 1
+    for (int i = 0; i < row; i++) {
+        p_to_p[i] = (int *)calloc(col, sizeof(int));
     }
+    // Gán giá trị vào mảng 2 chiều
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < col; j++) {
+            p_to_p[i][j] = number;
+            number++;
+        }
+    }
+    // In mảng 2 chiều
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < col; j++) {
+            printf("%d\t", p_to_p[i][j]);
+        }
+        printf("\n");
+    }
+
+    for (int i = 0; i < row; i++) {  // giải phóng bộ nhớ cho từng hàng
+        free(p_to_p[i]);
+    }
+    free(p_to_p);  // giải phóng bộ nhớ của double pointer
     return 0;
-}
-
-void print(int *pointerArray, int sizeArray) {
-    for (int i = 0; i < sizeArray; i++) {
-        printf("%d ", pointerArray[i]);
-    }
-}
-
-void print1(char *pointerArray, int sizeArray) {
-    for (int i = 0; i < sizeArray; i++) {
-        printf("%s ", pointerArray[i]);
-    }
 }
