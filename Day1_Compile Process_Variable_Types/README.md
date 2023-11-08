@@ -1,3 +1,8 @@
+
+```
+Author: du.pham - 08/11/2023
+```
+
 # DAY 1: COMPILE PROCESS, VARIABLES, TYPES
 ## SESSION 1: COMPILE PROCESS
 ### 1. Compile là gì
