@@ -1,7 +1,7 @@
 # Mục lục
 
 1. [Struct](#struct)
-2. [Enum)](#enum)
+2. [Enum](#enum)
 3. [Union](#union)
 4. [Bit field](#bit_fields)
 
@@ -34,7 +34,7 @@ struct info{
 
 **Ví dụ 2**
 
-```
+```c
 struct info{
   char id;
   int age;
@@ -50,7 +50,7 @@ struct info{
 **Ví dụ 3**
 Nếu ko sử dụng từ khóa _#pragma pack(n)_ thì struct sẽ tốn nhiều dung lượng hơn.
 
-```
+```c
 struct info{
   char a;
   int b;
@@ -60,7 +60,7 @@ struct info{
 
 ![Mô tả Union](./ExamplePictures/struct_6.png)
 
-```
+```c
 #pragma pack(1)
 struct info{
   char a;

@@ -1,4 +1,4 @@
-```
+```python
 Author: Lê Minh Đức (duc5.le)
 Study time: 7/11/2023 - 8/11/2023
 ```
@@ -14,6 +14,9 @@ Study time: 7/11/2023 - 8/11/2023
 3. [Mảng con trỏ](#mang_con_tro)
    - [Ứng dụng](#ung_dung)
    - [Coding mảng con trỏ](#coding_mang_con_tro)
+4. [Con trỏ hàm](#con_tro_ham)
+   - [Lý thuyết con trỏ hàm](#ly_thuyet_con_tro_ham)
+   - [Coding](#coding_con_tro_ham)
 
 # <a id ="con_tro_cap_1"></a>Con trỏ cấp 1 (Pointer)
 
@@ -28,21 +31,23 @@ Con trỏ trong C cũng là 1 biến bình thường, khác 1 chỗ là nó sẽ
 - Khi áp dụng toán tử tăng/giảm với con trỏ: nó sẽ di chuyển giữa các phẩn tử liền kề chứ không tăng giảm giá trị như biến thông thường.
   **Ví dụ**
 
-        #include "stdio.h"
-        int number = 10;
-        int main(){
-            int *p = &number;
-            printf("Địa chỉ hiện tại của p: %p\n", p);
-            p = p + 1;
-            printf("Địa chỉ mới của p: %p", p);
-            return 0;
-        }
+```c
+    #include "stdio.h"
+    int number = 10;
+    int main(){
+        int *p = &number;
+        printf("Địa chỉ hiện tại của p: %p\n", p);
+        p = p + 1;
+        printf("Địa chỉ mới của p: %p", p);
+        return 0;
+    }
+```
 
-  ![Minh họa](./ExamplePictures/pointer_5.png)
+![Minh họa](./ExamplePictures/pointer_5.png)
 
 - Mối quan hệ giữa _con trỏ_ và _mảng_
   Ta khai báo 1 con trỏ và 1 mảng 4 phần tử như sau:
-  ```
+  ```c
     int x[4];
     int *p;
     p = x;
@@ -51,7 +56,7 @@ Con trỏ trong C cũng là 1 biến bình thường, khác 1 chỗ là nó sẽ
   ```
   ![Minh họa](./ExamplePictures/pointer_6.png)
   Với mảng trong ảnh phía trên, ta có:
-  ```
+  ```c
   &x[0] và p có cùng giá trị, và x[0] hay _p hay p[0] là tương đương nhau.
   &x[1] tương đương với p+1 và x[1] tương đương với _(p+1) và p[1].
   &x[2] tương đương với p+2 và x[2] tương đương với _(p+2) và p[2].
@@ -80,7 +85,7 @@ Hằng con trỏ chỉ có thể trỏ tới 1 vùng nhớ cố định, tức l
 
 - Ví dụ:
 
-  ```
+  ```c
   #include <stdio.h>
 
   int main(){
@@ -113,23 +118,18 @@ Thức tế rằng con trỏ hằng không nhất thiết phải trỏ đến v�
 
 - Ví dụ
 
-  ```
+  ```c
   #include <stdio.h>
 
   int main(){
     const int q = 5;
-
     //Valid
     const int* const p = &q;
-
     //Compilation error
     *p = 7;
-
     const int q2 = 7;
-
     //Compilation error
     p = &q2;
-
     return 0;
   }
 
@@ -144,7 +144,7 @@ Thức tế rằng con trỏ hằng không nhất thiết phải trỏ đến v�
 
   Bản chất con trỏ cấp 2 cũng chỉ là con trỏ, chúng ta vẫn xuất được 3 giá trị liên quan tới con trỏ cấp 2 (giống như con trỏ cấp 1).
 
-  ```
+  ```c
   **ptr: giá trị mà ptr trỏ đến
   *ptr: địa chỉ của con trỏ mà ptr trỏ tới
   ptr: địa chỉ của **ptr
@@ -154,7 +154,7 @@ Thức tế rằng con trỏ hằng không nhất thiết phải trỏ đến v�
 
 - **Ví dụ 1:** tổng quát về con trỏ cấp 2
 
-  ```
+  ```c
   #include "stdio.h"
 
   int main() {
@@ -178,7 +178,7 @@ Thức tế rằng con trỏ hằng không nhất thiết phải trỏ đến v�
 
 - **Ví dụ 2:** sử dụng con trỏ cấp 2 để thay đổi địa chỉ trỏ đến của 1 con trỏ cấp 1
 
-  ```
+  ```c
   #include "stdio.h"
 
   int **changePointer(int *pointer);
@@ -206,7 +206,7 @@ Thức tế rằng con trỏ hằng không nhất thiết phải trỏ đến v�
 
 - **Ví dụ 3:** sử dụng con trỏ cấp 2 để cấp phát động cho con trỏ cấp 1
 
-  ```
+  ```c
   void allocateMemory(int **p_to_p, int sizeAllocate) {
       // *p_to_p = (int *)malloc(sizeAllocate * sizeof(int));
       *p_to_p = (int *)calloc(sizeAllocate, sizeof(int));  // allocate memory for address that p_to_p points to
@@ -219,13 +219,13 @@ Thức tế rằng con trỏ hằng không nhất thiết phải trỏ đến v�
 - **Ví dụ 4:** sử dụng con trỏ cấp 2 để cấp phát động cho "array pointer" (mảng con trỏ)
   Để biết _mảng con trỏ_ là gì, bạn có thể đọc mục bên dưới.
 
-  ```
+  ```c
     int **p_to_t = (int **)calloc(5, sizeof(int *));
   ```
 
 - **Ví dụ 5:** sử dụng con trỏ cấp 2 để cấp phát động cho mảng 2 chiều
 
-  ```
+  ```c
   #include "stdio.h"
   #include "stdlib.h"
 
@@ -271,13 +271,14 @@ Mảng con trỏ trong C là một mảng các con trỏ. Mỗi phần tử tron
 - Sử dụng để lưu trữ multiple strings
 - Sử dụng để implement LinkedHashMap & thuật toán sorting: bucket sort
 - Sử dụng để lưu trữ nhiều kiểu pointer được khai báo riêng biệt
+
   [Tham khảo thêm tại đây](https://www.geeksforgeeks.org/array-of-pointers-in-c/)
 
 ## <a id ="coding_mang_con_tro"></a>Coding mảng con trỏ
 
 - **Ví dụ 1:** tổng quát về mảng con trỏ
 
-  ```
+  ```c
 
   #include <stdio.h>
 
@@ -312,7 +313,7 @@ Mảng con trỏ trong C là một mảng các con trỏ. Mỗi phần tử tron
 
   _Vì thế ta sử dụng mảng con trỏ để lưu trữ các string đấy_
 
-  ```
+  ```c
 
   int main() {
   char \*name[] = {
@@ -331,7 +332,7 @@ Mảng con trỏ trong C là một mảng các con trỏ. Mỗi phần tử tron
 
 - **Ví dụ 3:** sử dụng mảng con trỏ để lưu các hàm có cùng kiểu trả về
 
-  ```
+  ```c
 
   #include "stdio.h"
 
@@ -372,7 +373,7 @@ Mảng con trỏ trong C là một mảng các con trỏ. Mỗi phần tử tron
 
 - **Ví dụ 1:** khai báo tường minh
 
-  ```
+  ```c
   #include <stdio.h>
 
   int calSum(int x, int y) {
@@ -389,7 +390,7 @@ Mảng con trỏ trong C là một mảng các con trỏ. Mỗi phần tử tron
 
 - **Ví dụ 2:** khai báo không tường minh
 
-  ```
+  ```c
   #include <stdio.h>
 
   typedef int (*funPointer)(int, int);
@@ -407,7 +408,7 @@ Mảng con trỏ trong C là một mảng các con trỏ. Mỗi phần tử tron
 
 - **Ví dụ 3:** sử dụng con trỏ hàm làm tham số của 1 hàm
 
-  ```
+  ```c
   #include <stdio.h>
 
   int calculateSum(int a, int b) {
