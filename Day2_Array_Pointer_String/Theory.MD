@@ -75,7 +75,7 @@ int main()
 
 **Output**
 
-```C
+```c
 Element at arr[2]: l
 Element at arr[4]: o
 Element at arr[0]: h
@@ -88,21 +88,15 @@ Element at arr[0] after change value: m
 
 int main()
 {
-
     // array declaration and initialization
     int arr[5] = { 15, 25, 35, 45, 55 };
-
     // accessing element at index 2 i.e 3rd element
     printf("Element at arr[2]: %d\n", arr[2]);
-
     // accessing element at index 4 i.e last element
     printf("Element at arr[4]: %d\n", arr[4]);
-
     // accessing element at index 0 i.e first element
     printf("Element at arr[0]: %d", arr[0]);
-
     arr[0] = 20;
-
     printf("Element at arr[0] after change value: %d", arr[0]);
 
     return 0;
@@ -289,11 +283,7 @@ Pham Van Du
 
 **Khai báo theo dạng mảng thông thường**
 
-```
-Khi ta khai báo string theo dạng mảng thông thường,
-lúc này dữ liệu của ta sẽ được lưu trữ trên RAM,
-do đó mà chúng ta có thể thay đổi được string hoặc thay đổi 1 kí tự trong string.
-```
+- Khi ta khai báo string theo dạng mảng thông thường, lúc này dữ liệu của ta sẽ được lưu trữ trên RAM, do đó mà chúng ta có thể thay đổi được string hoặc thay đổi 1 kí tự trong string.
 
 **Example**
 
@@ -323,18 +313,13 @@ hello world
 
 **Khai báo dạng con trỏ**
 
-```
-Khi ta khai báo string theo dạng con trỏ
-lúc này dữ liệu của ta sẽ được lưu trữ trên ROM
-do đó mà chúng ta không thể thay đổi 1 kí tự trong string.
-```
+Khi ta khai báo string theo dạng con trỏ, lúc này dữ liệu của ta sẽ được lưu trữ trên ROM, do đó mà chúng ta không thể thay đổi 1 kí tự trong string.
 
 ```c
 #include <stdio.h>
 
 int main()
 {
-
     //Sử dụng con trỏ;
     char *myString = "Pham Van Du";
     const char *myString1 = "Pham Van Du";
@@ -349,7 +334,7 @@ int main()
 
 **Ouput**
 
-```
+```c
 main.c: In function 'main':
 main.c:10:18: error: assignment of read-only location '*myString1'
      myString1[0] = 'D';
