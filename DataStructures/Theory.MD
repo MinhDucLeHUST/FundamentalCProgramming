@@ -1,7 +1,14 @@
-# Struct
+# Mục lục
+
+1. [Struct](#struct)
+2. [Enum)](#enum)
+3. [Union](#union)
+4. [Bit field](#bit_fields)
+
+# <a id = "struct"></a> Struct
 
 - Struct là 1 kiểu dữ liệu tự định nghĩa bao gồm nhiều thành phần có thể thuộc nhiều kiểu dữ liệu khác nhau.
-  ![Mô tả Union](./ExamplePictures/struct_1.png)
+  ![Minh họa](./ExamplePictures/struct_1.png)
 - Kích thước của struct bằng bội của phần tử có kích thước lớn nhất trong struct đó.
   **Ví dụ 1**
 
@@ -65,7 +72,7 @@ struct info{
 
 ![Mô tả Union](./ExamplePictures/struct_5.png)
 
-# Enum
+# <a id = "enum"></a>Enum
 
 Enum là 1 kiểu dữ liệu người dùng tự định nghĩa, được sử dụng để gán tên cho các hằng số. Tác dụng của chúng giúp lập trình viên không nhầm lẫn và dễ kiểu soát khi làm việc với nhiều hằng số.
 
@@ -74,7 +81,7 @@ Enum là 1 kiểu dữ liệu người dùng tự định nghĩa, được sử 
 - Nếu không gán giá trị cho các hằng số trong enum thì nó mặc định bắt đầu từ giá trị 0
 - Nếu đã gán 1 giá trị bất kỳ trong enum, các giá trị sau thì cộng thêm 1 đơn vị nhưng các giá trị đứng trước sẽ được gán giá trị theo index đầu tiên (được gán = 0 nếu chưa đc gán giá trị nào).
 
-# Union
+# <a id = "union"></a>Union
 
 Union là 1 kiểu dữ liệu trong C, cho phép lưu trữ các biến có các kiểu dữ liệu khác nhau trong cùng một vùng nhớ. Có thể định nghĩa Union với rất nhiều tham số, nhưng chỉ 1 thành phần chứa giá trị tại 1 thời điểm.
 
@@ -87,7 +94,7 @@ Union là 1 kiểu dữ liệu trong C, cho phép lưu trữ các biến có cá
 - Từ đó, dễ dàng thấy được sự khác biệt giữa _struct_ và _union_
   ![Kích thước trong Union](./ExamplePictures/union_4.png)
 
-# Bit fields
+# <a id = "bit_fields"></a>Bit fields
 
 **Bit fields** là 1 kỹ thuật nhằm tối ưu bộ nhớ trong struct, trong 1 số trường hợp khi ta sử dụng kiểu dữ liệu có phạm vi lớn nhưng thực tế kích thước nhỏ hơn hoặc bao giờ đạt đến những giá trị lớn đó.
 **Ví dụ**: khi khai báo 1 biến có kiểu 'bool' (chỉ có 2 giá trị true & false) tuy nhiên lại sử dụng mất 1 byte (8 bit) cho kiểu dữ liệu này, trong khi chỉ cần sử dụng 1 bit (0 hoặc 1) để biểu diễn giá trị cho kiểu dữ liệu 'bool', từ đấy nhận thấy chúng ta lãng phí 7 bit.
