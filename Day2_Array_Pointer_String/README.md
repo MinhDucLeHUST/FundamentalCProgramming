@@ -125,6 +125,47 @@ Phan tu tai arr[4]: 55
 Phan tu tai arr[0]: 15
 Phan tu tai arr[0] sau khi thay đổi giá trị: 20
 ```
+## Con trỏ mảng
+**Định nghĩa**
+```
+Là một biến con trỏ lưu trữ địa chỉ đầu tiên của mảng, nó cũng là địa chỉ tại vị trí phần tử đầu tiên của mảng
+```
+**Example**
+```c
+#include <stdio.h>
+ 
+int main()
+{
+ 
+    int a[5] = {1,2,3,4,5};
+    printf("%#x", a);// địa chỉ đầu tiên của mảng
+    printf("%#x", &a[0]);// địa chỉ phần tử đầu tiên trong mảng
+    return 0;
+}
+```
+**Output**
+```
+0x61ff0c
+0x61ff0c
+```
+```c
+#include <stdio.h>
+ 
+int main()
+{
+ 
+    int a[5] = {1,2,3,4,5};
+    int *ptr = a;// sử dụng 1 con trỏ khác để quản lý mảng a
+    for(int i = 0; i < 5; i++){
+        printf("%d ", *(ptr+i));//in ra các giá trị trong mảng
+    }
+    return 0;
+}
+```
+**Output**
+```
+1 2 3 4 5 
+```
 ## Mảng nhiều chiều
 **Định nghĩa**
 ```
@@ -173,47 +214,6 @@ int main()
 100 100 100 100
 100 100 100 100
 100 100 100 100
-```
-## Con trỏ mảng
-**Định nghĩa**
-```
-Là một biến con trỏ lưu trữ địa chỉ đầu tiên của mảng, nó cũng là địa chỉ tại vị trí phần tử đầu tiên của mảng
-```
-**Example**
-```c
-#include <stdio.h>
- 
-int main()
-{
- 
-    int a[5] = {1,2,3,4,5};
-    printf("%#x", a);// địa chỉ đầu tiên của mảng
-    printf("%#x", &a[0]);// địa chỉ phần tử đầu tiên trong mảng
-    return 0;
-}
-```
-**Output**
-```
-0x61ff0c
-0x61ff0c
-```
-```c
-#include <stdio.h>
- 
-int main()
-{
- 
-    int a[5] = {1,2,3,4,5};
-    int *ptr = a;// sử dụng 1 con trỏ khác để quản lý mảng a
-    for(int i = 0; i < 5; i++){
-        printf("%d ", *(ptr+i));//in ra các giá trị trong mảng
-    }
-    return 0;
-}
-```
-**Output**
-```
-1 2 3 4 5 
 ```
 # 2. STRING
 
