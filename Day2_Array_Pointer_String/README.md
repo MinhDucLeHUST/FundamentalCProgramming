@@ -271,10 +271,12 @@ Hello world
 Pham Van Du
 Pham Van Du
 ```
-## Sự khác biệt về kiểu khai trong string
+## Sự khác biệt về kiểu khai báo trong string
 **Khai báo theo dạng mảng thông thường**
 ```
-Khi ta khai báo string theo dạng mảng thông thường, lúc này dữ liệu của ta sẽ được lưu trữ trên RAM, do đó mà chúng ta có thể thay đổi được string hoặc thay đổi 1 kí tự trong string.
+Khi ta khai báo string theo dạng mảng thông thường,
+lúc này dữ liệu của ta sẽ được lưu trữ trên RAM, 
+do đó mà chúng ta có thể thay đổi được string hoặc thay đổi 1 kí tự trong string.
 ```
 **Example**
 ```c
