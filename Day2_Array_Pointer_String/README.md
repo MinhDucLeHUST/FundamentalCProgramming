@@ -302,7 +302,7 @@ hello world
 ```
 **Khai báo dạng con trỏ**
 ```
-Khi ta khai báo string theo dạng mảng thông thường
+Khi ta khai báo string theo dạng con trỏ
 lúc này dữ liệu của ta sẽ được lưu trữ trên ROM 
 do đó mà chúng ta không thể thay đổi 1 kí tự trong string.
 ```
