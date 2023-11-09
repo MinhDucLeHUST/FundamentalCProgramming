@@ -13,6 +13,6 @@
 
 - Syntax
 
-`<type> function_name (<type> variable_name, ...);`
+  `<type> function_name (<type> variable_name, ...);`
 
 # <a id = "variadic_macro"></a> Variadic Macro
