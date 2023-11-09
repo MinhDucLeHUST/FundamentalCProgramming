@@ -6,7 +6,12 @@ Author: du.pham - 08/11/2023
 # DAY 1: COMPILE PROCESS, VARIABLES, TYPES
 ## SESSION 1: COMPILE PROCESS
 ### 1. Compile là gì
-    - Tiến trình biên dịch trong C liên quan đến việc chuyển đổi mã nguồn do lập trình viên viết ra thành mã máy và kiểm tra cú pháp của mã nguồn để xác định xem có bất kì lỗi hay warning nào trong chương trình của chúng ta hay không. Tiến trình này sẽ phải thông qua một vài bước để có thể tạo ra được một tệp tin thực thi (.exe) cái mà máy tính của chúng ta có thể hiểu được.
+    - Tiến trình biên dịch trong C liên quan đến việc chuyển đổi mã nguồn do 
+    lập trình viên viết ra thành mã máy và kiểm tra cú pháp của mã nguồn để 
+    xác định xem có bất kì lỗi hay warning nào trong chương trình của chúng
+    ta hay không. Tiến trình này sẽ phải thông qua một vài bước để có thể tạo 
+    ra được một tệp tin thực thi (.exe) cái mà máy tính của chúng ta có thể 
+    hiểu được.
 ### 2. Các bước trong quá trình biên dịch
     - Tiến trình biên dịch trong ngôn ngữ C sẽ trải qua 4 bước như sau:
         + Tiền xử lý (Preprocessing)
@@ -24,19 +29,34 @@ Author: du.pham - 08/11/2023
         + Xử lý macro
 **b) Compiling**
 
-    - Ở giai đoạn này, sẽ sử dụng phần mềm biên dịch để chuyển đổi file (.i) thành file assembly (.s) cái mà sẽ chứa các tập lệnh trong ngôn ngữ máy.
-    - Mã nguồn máy (assembly code) là một ngôn ngữ được sử dụng để viết các tập lệnh mức thấp (thường sử dụng trong lập trình vi điều khiển). Toàn bộ các chương trình mã nguồn sẽ kiểm tra và báo cáo khi có bất kì lỗi hoặc cảnh báo trong mã nguồn lên cửa sổ terminal.
+    - Ở giai đoạn này, sẽ sử dụng phần mềm biên dịch để chuyển đổi file (.i) 
+    thành file assembly (.s) cái mà sẽ chứa các tập lệnh trong ngôn ngữ máy.
+    - Mã nguồn máy (assembly code) là một ngôn ngữ được sử dụng để viết các 
+    tập lệnh mức thấp (thường sử dụng trong lập trình vi điều khiển). 
+    - Toàn bộ các chương trình mã nguồn sẽ kiểm tra và báo cáo khi có bất kì
+    lỗi hoặc cảnh báo trong mã nguồn lên cửa sổ terminal.
 **c) Assembling**
     
-    - Assembler được sử dụng để chuyển đổi mã nguồn assembly(.s) thành mã máy(dạng nhị phân hoặc hexa).
-    - File được sinh ra sẽ có tên giống như tên file asslembly trước khi được chuyển đổi được biết đến là object file với đuôi .obj trong DOS hoặc .o trong UNIX OS.
+    - Assembler được sử dụng để chuyển đổi mã nguồn assembly(.s)
+    thành mã máy(dạng nhị phân hoặc hexa).
+    - File được sinh ra sẽ có tên giống như tên file asslembly trước
+    khi được chuyển đổi được biết đến là object file với đuôi .obj trong DOS hoặc .o trong UNIX OS.
 
 **d) Linking**
 
-    - Tất cả các chương trình được viết trong C thì đều sử dụng các hàm thư viện. Các thư viện này đã được tiền biên dịch, và các mã nguồn của thư viện đều đã được lưu trong file .lib hoặc .a. Do đó mà công việc chính trong quá trình này là kết hợp tất các các mã nguồn của các file thư viện với chương trình của chúng ta. Đầu ra của quá trình này sẽ là một file thực thi (.exe). 
+    - Tất cả các chương trình được viết trong C thì đều 
+    sử dụng các hàm thư viện. Các thư viện này đã được tiền 
+    biên dịch, và các mã nguồn của thư viện đều đã được lưu 
+    trong file .lib hoặc .a. Do đó mà công việc chính trong 
+    quá trình này là kết hợp tất các các mã nguồn của các file 
+    thư viện với chương trình của chúng ta. Đầu ra của quá trình 
+    này sẽ là một file thực thi (.exe). 
 ## SESSION 2: VARIABLES
 ```
-Mỗi biến trong ngôn ngữ lập trình C thì đều là các kiểu dữ liệu có liên quan đến nhau. Nó chỉ định được kiểu dữ liệu mà biến đó có thể lưu trữ như: số nguyên, kí tự, số thập phân,... Mỗi kiểu dữ liệu sẽ yêu cầu số lượng bộ nhớ nhất định và phạm vi lưu trữ của các kiểu dữ liệu đó phụ thuộc vào bộ nhớ của nó.
+Mỗi biến trong ngôn ngữ lập trình C thì đều là các kiểu dữ liệu có liên quan đến nhau. 
+Nó chỉ định được kiểu dữ liệu mà biến đó có thể lưu trữ như: số nguyên, kí tự, số thập phân,... 
+Mỗi kiểu dữ liệu sẽ yêu cầu số lượng bộ nhớ nhất định và phạm vi lưu trữ của các kiểu dữ liệu 
+đó phụ thuộc vào bộ nhớ của nó.
 ```
 Các kiểu dữ liệu trong ngôn ngữ C được trình bày trong bảng dưới đây:
 |      Types        | Description|
@@ -98,7 +118,8 @@ int main()
 **Định nghĩa**
 ```
 Là một biến được định nghĩa bên ngoài phạm vi của tất cả các hàm trong một chương trình.
-Biến global có phạm vi toàn cục nên nó có thể được truy cập và thay đổi trong tất cả các hàm trong chương trình
+Biến global có phạm vi toàn cục nên nó có thể được truy cập và thay đổi trong 
+tất cả các hàm trong chương trình
 ```
 **Example**
 ```c
@@ -112,12 +133,14 @@ int main(){
 ```
 **Note**
 ```
-Khi bạn khai báo một biến global, thì vị trí của biến global sẽ được lưu trên vùng data segment
+Khi bạn khai báo một biến global, thì vị trí của biến global sẽ được lưu 
+trên vùng data segment
 ```
 ### 2. LOCAL VARIABLE
 **Định nghĩa**
 ```
-Là biến được định nghĩa trong một hàm hoặc trong một khối code. Phạm vi hoạt động của biến local giới hạn trong khối code mà tại đó nó được khai báo.
+Là biến được định nghĩa trong một hàm hoặc trong một khối code. 
+Phạm vi hoạt động của biến local giới hạn trong khối code mà tại đó nó được khai báo.
 ```
 **Example**
 ```c
@@ -136,7 +159,8 @@ Khi bạn khai báo một biến local, thì vị trí của biến global sẽ 
 ### 3. STATIC VARIABLE
 **Định nghĩa**
 ```
-Biến static là biến mà chỉ được khởi tạo một lần và sẽ được lưu trữ giá trị cho các lần gọi tiếp theo.
+Biến static là biến mà chỉ được khởi tạo một lần và sẽ được lưu trữ giá trị 
+cho các lần gọi tiếp theo.
 ```
 **Example**
 ```c
@@ -169,12 +193,14 @@ Khi bạn khai báo một biến static, biến này sẽ được lưu trữ t�
 
 ### 1. 'const'
 ```
-Từ khóa 'const' có thể được áp dụng trong việc khai báo biến với mục đích để đảm bảo giá trị của nó sẽ không bị thay đổi.
+Từ khóa 'const' có thể được áp dụng trong việc khai báo biến với mục 
+đích để đảm bảo giá trị của nó sẽ không bị thay đổi.
 
 Example:
 const int var = 100;
 
-Với việc khai báo biến var có kiểu dữ liệu là int cùng với từ khóa là const thì khi bạn muốn thay đổi giá trị var thì trình biên dịch sẽ báo lỗi.
+Với việc khai báo biến var có kiểu dữ liệu là int cùng với từ khóa là const thì 
+khi bạn muốn thay đổi giá trị var thì trình biên dịch sẽ báo lỗi.
 ```
 **Example**
 ```c
@@ -201,7 +227,9 @@ main.c:35:9: error: assignment of read-only variable 'var'
 
 **Note**
 ```
-Khi bạn muốn thay đổi giá trị của biến const, chúng ta không thể thay đổi trực tiếp giá trị đó, mà phải thực hiện thông qua một con trỏ lưu địa chỉ của biến const cần thay đổi
+Khi bạn muốn thay đổi giá trị của biến const, 
+chúng ta không thể thay đổi trực tiếp giá trị đó, 
+mà phải thực hiện thông qua một con trỏ lưu địa chỉ của biến const cần thay đổi
 ```
 **Example**
 ```c
@@ -226,7 +254,8 @@ int main()
 ```
 ### 2. 'Extern'
 ```
-Từ khóa 'extern' được áp dụng cho biến và các hàm trong C. Nó có chức năng giúp mở rộng phạm vi hoạt động của biến hoặc hàm .
+Từ khóa 'extern' được áp dụng cho biến và các hàm trong C. 
+Nó có chức năng giúp mở rộng phạm vi hoạt động của biến hoặc hàm .
 ```
 **Syntax**
 ```
@@ -247,6 +276,8 @@ int main()
 ```
 **Tính chất của biến extern**
 ```
-Khi sử dụng từ khóa extern, bạn muốn sử dụng lại một biến hoặc một hàm đã được khai báo và định nghĩa ở một file nào đó, biến extern hoặc hàm sẽ không được cấp phát một vùng nhớ mới.
+Khi sử dụng từ khóa extern, bạn muốn sử dụng lại một biến hoặc 
+một hàm đã được khai báo và định nghĩa ở một file nào đó, biến 
+extern hoặc hàm sẽ không được cấp phát một vùng nhớ mới.
 ```
 
