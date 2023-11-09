@@ -1,3 +1,6 @@
+```
+Author: du.pham
+```
 # DAY 2: ARRAY-POINTER-STRING
 
 ## 1. ARRAY
