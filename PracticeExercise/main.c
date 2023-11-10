@@ -1,12 +1,8 @@
-#include "stdio.h"
-
-int main() {
-    int x = 1, y = 2, z = 3;
-    int *p = &x;
-    int *q = &y;
-    int *r = &z;
-
-    printf("value x = %d, value y = %d, value z = %d\n", x, y, z);
-
-    return 0;
+void main() {
+    int a[4] = {1, 2, 3, 4};
+    int *p = a;
+    int *p2 = new int;
+    delete p;
+    delete a;
+    delete p2;
 }
