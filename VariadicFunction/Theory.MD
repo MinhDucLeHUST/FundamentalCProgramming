@@ -18,7 +18,7 @@
   | --------- | ----------- |
   | va_start | Bắt đầu quá trình lấy các tham số trong list tham số truyền vào |
   | va_arg | Đại diện cho các đối số được thêm vào **...**|
-  | va_copy | |
+  | va_copy | Copy arg này sang arg khác nếu ko muốn va_start arg đấy |
   | va_end | Kết thúc quá trình lấy các tham số trong list tham số truyền vào |
   | va-list | Chứa các thông tin liên quan đến va_start, va_arg, va_end |
 - Syntax
