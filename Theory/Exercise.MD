@@ -610,7 +610,7 @@ Set x, y, z to three distinct values. Set p, q, r to the addresses of x, y, z re
 
 Draw diagrams to explain the results
 
-![](./Pictures/ImageExercise/practice_1.png)
+![](../Pictures/ImageExercise/practice_1.png)
 **Source**
 
 ```c
@@ -748,7 +748,7 @@ p = 0x61ff10, *p = 0x4, &p = 0x61ff0c
 
 **Explain**
 
-![](./Pictures/ImageExercise/practice_2.png)
+![](../Pictures/ImageExercise/practice_2.png)
 
 ## Q5.6
 

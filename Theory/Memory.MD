@@ -1,7 +1,7 @@
 # <a id = "memory-layout"></a> 1. Memory layout
 
 Memory layout của 1 chương trình C/C++ bao gồm 5 phần chính: Stack, Heap, BSS, DS, Text
-![](./ImageMemory/memory_1.png)
+![](./../Pictures/ImageMemory/memory_1.png)
 
 ## <a id = "text-segment"></a> 1.1. Text segment
 
@@ -64,7 +64,7 @@ int foo() {
   - Khi một hàm X được gọi, thì nó sẽ chiếm một số không gian nhất định trong bộ nhớ
 
   - Sau đó một hàm Y được gọi vào, và hàm Y này sau đó lại gọi một hàm Z với không gian yêu cầu lớn, từ đó thì các giá trị của hàm Z có thể sẽ ghi đè lên các giá trị của hàm X và Y
-    ![](./ImageMemory/memory_2.png)
+    ![](./../Pictures/ImageMemory/memory_2.png)
   - Do bộ nhớ Stack sẽ lưu giữ địa chỉ trả về, tức là địa chỉ của hàm đang chạy trước khi gọi hàm mới, khi hàm đang chạy kết thúc thì vùng nhớ tạm thời sẽ được đẩy ra khỏi stack và việc thực thi sẽ do địa chỉ trả về thực hiện, vì thế việc để ghi đè địa chỉ bởi lỗi tràn bộ đệm thì nó sẽ trỏ đến địa chỉ khác.
 
 # <a id = "memory-management"></a> 2. Memory management

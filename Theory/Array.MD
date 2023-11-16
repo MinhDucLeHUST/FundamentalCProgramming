@@ -1,17 +1,16 @@
-```
+```python
 Author: du.pham
+Edited: duc5.le
 ```
 
-# DAY 2: ARRAY-POINTER-STRING
-
-## 1. ARRAY
+# 1. Array
 
 **Định nghĩa**
 
 - Mảng là một trong những cấu trúc dữ liệu được sử dụng nhiều nhất trong C.
 - Mảng là một tập hợp các phần tử cố định có cùng kiểu dữ liệu, được lưu trữ liền kề
   trong bộ nhớ.
-- **Ví dụ:** Tập hợp các số nguyên dương, bảng chữ cái,... thì đều được coi là một mảng.
+  ![](https://www.programiz.com/sites/tutorial2program/files/c-arrays.jpg)
 
 **Syntax**
 
@@ -27,7 +26,7 @@ hoặc
 - Các ô nhớ trong một mảng có vị trí liền kề nhau trong bộ nhớ.
 - Các phần tử trong mảng có thể được truy cập ngẫu nhiên thông qua chỉ số của nó trong mảng.
 
-![Ảnh minh họa](./png/array.png)
+![Ảnh minh họa](https://media.geeksforgeeks.org/wp-content/uploads/20230302091959/Arrays-in-C.png)
 **Example**
 
 ```c
@@ -105,14 +104,14 @@ int main()
 
 **Output**
 
-```C
+```c
 Phan tu tai arr[2]: 35
 Phan tu tai arr[4]: 55
 Phan tu tai arr[0]: 15
 Phan tu tai arr[0] sau khi thay đổi giá trị: 20
 ```
 
-## Con trỏ mảng
+## 1.2. Con trỏ mảng
 
 **Định nghĩa**
 
@@ -135,7 +134,7 @@ int main()
 
 **Output**
 
-```C
+```c
 0x61ff0c
 0x61ff0c
 ```
@@ -157,18 +156,18 @@ int main()
 
 **Output**
 
-```C
+```c
 1 2 3 4 5
 ```
 
-## Mảng nhiều chiều
+## 2.2. Mảng nhiều chiều
 
 **Định nghĩa**
 
 - Là một mảng của các mảng, cái mà lưu trữ dữ liệu đồng nhất trên 1 dạng bảng.
 - Dữ liệu trong mảng nhiều chiều thì thường được lưu trữ theo thứ tự hàng trên bộ nhớ.
+  ![](https://cafedev.vn/wp-content/uploads/2020/04/cafedev_array_2d.png)
 
-![](./png/matrix.png)
 **Syntax**
 
 `data_type array_name[size1][size2]...[sizeN]`
@@ -213,130 +212,4 @@ int main()
 100 100 100 100
 100 100 100 100
 100 100 100 100
-```
-
-# 2. STRING
-
-**Định nghĩa**
-
-```
-Là một tập hợp các kí tự được kết thúc bằng kí tự null '\0'.
-Sực khác nhau giữa mảng kí tự và chuối trong C là chuỗi trong C được kết thúc bằng kí tự '\0'.
-```
-
-**Example**
-
-```c
-#include <stdio.h>
-
-int main()
-{
-
-    // array declaration and initialization
-    char arr[6] = {'h', 'e', 'l', 'l', 'o', '\0'};
-    char arr1[] = "Hello world";
-	printf("%s\n", arr);
-    printf("%s", arr1);
-    return 0;
-}
-```
-
-**Output**
-
-```
-hello
-Hello world
-```
-
-**Một số cách khai báo String trong C**
-
-```c
-#include <stdio.h>
-
-int main()
-{
-
-    //Sử dụng khai báo như mảng thông thường;
-    char arr[6] = {'h', 'e', 'l', 'l', 'o', '\0'};
-    char arr1[] = "Hello world";
-    //Sử dụng con trỏ;
-    char *myString = "Pham Van Du";
-    const char *myString1 = "Pham Van Du";
-	printf("%s\n", arr);
-    printf("%s\n", arr1);
-    printf("%s\n", myString);
-    printf("%s\n", myString1);
-    return 0;
-}
-```
-
-**Output**
-
-```
-hello
-Hello world
-Pham Van Du
-Pham Van Du
-```
-
-## Sự khác biệt về kiểu khai báo trong string
-
-**Khai báo theo dạng mảng thông thường**
-
-- Khi ta khai báo string theo dạng mảng thông thường, lúc này dữ liệu của ta sẽ được lưu trữ trên RAM, do đó mà chúng ta có thể thay đổi được string hoặc thay đổi 1 kí tự trong string.
-
-**Example**
-
-```c
-#include <stdio.h>
-
-int main()
-{
-
-    //Sử dụng khai báo như mảng thông thường;
-    char arr[6] = {'h', 'e', 'l', 'l', 'o', '\0'};
-    char arr1[] = "Hello world";
-    arr[0] = 'H';
-    arr1[0] = 'h';
-	printf("%s\n", arr);
-    printf("%s\n", arr1);
-    return 0;
-}
-```
-
-**Output**
-
-```
-Hello
-hello world
-```
-
-**Khai báo dạng con trỏ**
-
-Khi ta khai báo string theo dạng con trỏ, lúc này dữ liệu của ta sẽ được lưu trữ trên ROM, do đó mà chúng ta không thể thay đổi 1 kí tự trong string.
-
-```c
-#include <stdio.h>
-
-int main()
-{
-    //Sử dụng con trỏ;
-    char *myString = "Pham Van Du";
-    const char *myString1 = "Pham Van Du";
-    printf("%s\n", myString);
-    printf("%s\n", myString1);
-
-    myString[0] = 'E';
-    myString1[0] = 'D';
-    return 0;
-}
-```
-
-**Ouput**
-
-```c
-main.c: In function 'main':
-main.c:10:18: error: assignment of read-only location '*myString1'
-     myString1[0] = 'D';
-                  ^
 ```

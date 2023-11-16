@@ -50,7 +50,7 @@ Struct là 1 kiểu dữ liệu tự định nghĩa bao gồm nhiều thành ph�
   }
   ```
 
-  ![](./Pictures/./Pictures/ImageDataStructures/struct_4.png)
+  ![](../Pictures//ImageDataStructures/struct_4.png)
 
 **Ví dụ 2**
 
@@ -62,7 +62,7 @@ struct info{
 }
 ```
 
-![](././Pictures/ImageDataStructures/struct_3.png)
+![](../Pictures/ImageDataStructures/struct_3.png)
 
 - Khi sử dụng struct ta thường gặp phải trường hợp **Phân mảnh bộ nhớ**
 
@@ -78,7 +78,7 @@ struct info{
 }
 ```
 
-![](././Pictures/ImageDataStructures/struct_6.png)
+![](../Pictures/ImageDataStructures/struct_6.png)
 Khi ta sử dụng #pragma pack(n)
 
 ```c
@@ -91,7 +91,7 @@ struct info{
 #pragma pack() //end pragma
 ```
 
-![](././Pictures/ImageDataStructures/struct_5.png)
+![](../Pictures/ImageDataStructures/struct_5.png)
 **Ví dụ 4**
 
 ```c
@@ -124,7 +124,7 @@ Size of struct = 14
 Enum là 1 kiểu dữ liệu người dùng tự định nghĩa, được sử dụng để gán tên cho các hằng số. Tác dụng của chúng giúp lập trình viên không nhầm lẫn và dễ kiểu soát khi làm việc với nhiều hằng số.
 
 - Có 2 kiểu khai báo cho Enum:
-  ![Kiểu khai báo](././Pictures/ImageDataStructures/enum_1.png)
+  ![Kiểu khai báo](../Pictures/ImageDataStructures/enum_1.png)
 - Nếu không gán giá trị cho các hằng số trong enum thì nó mặc định bắt đầu từ giá trị 0
 - Nếu đã gán 1 giá trị bất kỳ trong enum, các giá trị sau thì cộng thêm 1 đơn vị nhưng các giá trị đứng trước sẽ được gán giá trị theo index đầu tiên (được gán = 0 nếu chưa đc gán giá trị nào).
 - **Ví dụ**
@@ -153,13 +153,13 @@ Enum là 1 kiểu dữ liệu người dùng tự định nghĩa, được sử 
 Union là 1 kiểu dữ liệu trong C, cho phép lưu trữ các biến có các kiểu dữ liệu khác nhau trong cùng một vùng nhớ. Có thể định nghĩa Union với rất nhiều tham số, nhưng chỉ 1 thành phần chứa giá trị tại 1 thời điểm.
 
 - Union sẽ cùng lưu trữ giá trị của các biến tại cùng một ô nhớ
-  ![Mô tả Union](././Pictures/ImageDataStructures/union_3.png)
+  ![Mô tả Union](../Pictures/ImageDataStructures/union_3.png)
 - Có 2 kiểu khai báo đối với Union (giống với struct)
-  ![Kiểu khai báo](././Pictures/ImageDataStructures/union_1.png)
+  ![Kiểu khai báo](../Pictures/ImageDataStructures/union_1.png)
 - Kích thước của Union chính bằng kích thước kiểu dữ liệu có kích thước lớn nhất.
-  ![Kích thước trong Union](././Pictures/ImageDataStructures/union_2.png)
+  ![Kích thước trong Union](../Pictures/ImageDataStructures/union_2.png)
 - Từ đó, dễ dàng thấy được sự khác biệt giữa _struct_ và _union_
-  ![Kích thước trong Union](././Pictures/ImageDataStructures/union_4.png)
+  ![Kích thước trong Union](../Pictures/ImageDataStructures/union_4.png)
 - **Ví dụ**
   **Source**
 
@@ -204,7 +204,7 @@ Nếu có nhiều kiểu dữ liệu thì mỗi kiểu dữ liệu sẽ được
 
 - **Ví dụ 1:** cách cấp phát trong Bit fields
 
-  ![](././Pictures/ImageDataStructures/bit_field_1.png)
+  ![](../Pictures/ImageDataStructures/bit_field_1.png)
 
 - **Ví dụ 2**
   **Source**

@@ -1,0 +1,256 @@
+```python
+Author: du.pham - 08/11/2023
+Edited: duc5.le - 16/11/2023
+```
+
+# 2. Variables
+
+- Trong ngôn ngữ lập trình C, biến là một vị trí trong bộ nhớ được sử dụng để lưu trữ giá trị dữ liệu. Mỗi biến có kiểu dữ liệu xác định (như int, float, char, etc.) và tên duy nhất để xác định nó trong phạm vi chương trình. Khi bạn khai báo một biến trong C, bạn đang yêu cầu hệ điều hành cấp phát một vùng nhớ cho biến đó.
+  ![](https://images.shiksha.com/mediadata/ugcDocuments/images/wordpressImages/2023_02_MicrosoftTeams-image-291.jpg)
+
+- Các kiểu dữ liệu trong ngôn ngữ C được trình bày trong bảng dưới đây:
+  | Types | Description|
+  |-------------------|------------|
+  |Kiểu dữ liệu nguyên thủy| Bao gồm các kiểu dữ liệu cơ bản như int, char, float, double,...|
+  |Kiểu dữ liệu người dùng tự định nghĩa|Được người dùng tự định nghĩa|
+  |Kiểu gốc|Kiểu dữ liệu bắt nguồn từ kiểu nguyên thủy hoặc được xây dựng dựa trên cơ sở đó|
+
+- Các kiểu dữ liệu khác nhau thì sẽ có phạm vi lưu trữ khác nhau. Bảng dưới đây sẽ mô tả điều đó:
+  | Data types | Size(bytes) | Range | Format Specifier |
+  |------------------------|-------------|-----------------------|-------------------------|
+  |short int|2|-32768 to 32768 | %hd|
+  |unsigned short int |2|-32768 to 32768 | %hu |
+  |unsigned int|4|0 to 65,535 |%u|
+  |int |4|0 to 4,294,967,295 | %d |
+  |long int |4|-2,147,483,648 to 2,147,483,647 | %hd|
+  |unsigned long int |4|-2,147,483,648 to 2,147,483,647 | %lu |
+  |long long int |8|0 to 4,294,967,295 | %lld |
+  |unsigned long long int|8|-(2^63) to (2^63)-1 | %llu |
+  |signed char|1|0 to 18,446,744,073,709,551,615 | %c |
+  |unsigned char|1|-128 to 127 | %c |
+  |float |4|0 to 255 | %f |
+  |double |8|1.2E-38 to 3.4E+38 | %lf |
+  |long double |16|1.7E-308 to 1.7E+308 | %Lf |
+
+**Example**
+
+```c
+#include <stdio.h>
+
+int main()
+{
+    // Integer value with positive data.
+    int a = 9;
+
+    // integer value with negative data.
+    int b = -9;
+
+    // U or u is Used for Unsigned int in C.
+    int c = 89U;
+
+    char ch = 'd';
+    // L or l is used for long int in C.
+    long int d = 99998L;
+
+    float f = 1.34;
+
+    printf("Integer value with positive data: %d\n", a);
+    printf("Integer value with negative data: %d\n", b);
+    printf("Integer value with an unsigned int data: %u\n",c);
+    printf("Character value with an char data: %c\n",ch);
+    printf("Float value with an float data: %f\n",f);
+    printf("Integer value with an long int data: %ld", d);
+
+    return 0;
+}
+```
+
+## 2.1. Global variable
+
+**Định nghĩa**
+
+- Global variable là một biến được định nghĩa bên ngoài phạm vi của tất cả các hàm trong một chương trình.
+- Biến global có phạm vi toàn cục nên nó có thể được truy cập và thay đổi trong
+  tất cả các hàm trong chương trình
+
+**Example**
+
+```c
+#include <stdio.h>
+
+int var = 10; // global variable
+int main(){
+    printf("Global Variable have value = %d", var);
+    return 0;
+}
+```
+
+**Note**
+
+- Khi bạn khai báo một biến global, thì vị trí của biến global sẽ được lưutrên vùng data segment
+
+## 2.2. Local variable
+
+**Định nghĩa**
+
+- Local variable là biến được định nghĩa trong một hàm hoặc trong một khối code.
+- Phạm vi hoạt động của biến local giới hạn trong khối code mà tại đó nó được khai báo.
+
+**Example**
+
+```c
+#include <stdio.h>
+
+int main(){
+    int var = 10; // local variable
+    printf("Global Variable have value = %d", var);
+    return 0;
+}
+```
+
+**Note**
+
+- Khi bạn khai báo một biến local, thì vị trí của biến global sẽ được lưu trên vùng stack
+
+## 2.3. Static variable
+
+**Định nghĩa**
+
+- Biến static là biến mà chỉ được khởi tạo một lần và sẽ được lưu trữ giá trị cho các lần gọi tiếp theo.
+
+**Example**
+
+```c
+#include <stdio.h>
+
+// function with static variable
+int fun()
+{
+    static int count = 0;
+    count++;
+    return count;
+}
+
+int main()
+{
+    printf("%d ", fun());
+    printf("%d ", fun());
+    return 0;
+}
+```
+
+**Output**
+
+```c
+1 2
+```
+
+**Note**
+
+- Khi bạn khai báo một biến static, biến này sẽ được lưu trữ tại vùng data segment
+
+# 4. Keyword with Varriable
+
+## 4.1. Const
+
+Từ khóa 'const' có thể được áp dụng trong việc khai báo biến với mục đích để đảm bảo giá trị của nó sẽ không bị thay đổi.
+
+**Ví dụ 1:**
+`const int var = 100;`
+
+Với việc khai báo biến var có kiểu dữ liệu là int cùng với từ khóa là const thì khi bạn muốn thay đổi giá trị var thì trình biên dịch sẽ báo lỗi.
+
+**Ví dụ 2:**
+
+```c
+#include <stdio.h>
+
+int main()
+{
+    const int var = 100;
+
+    // Compilation error: assignment of read-only variable
+    // 'var'
+    var = 200;
+
+    return 0;
+}
+```
+
+**Output**
+
+```
+main.c: In function 'main':
+main.c:35:9: error: assignment of read-only variable 'var'
+     var = 200;
+         ^
+```
+
+**Note**
+
+```
+Khi bạn muốn thay đổi giá trị của biến const,
+chúng ta không thể thay đổi trực tiếp giá trị đó,
+mà phải thực hiện thông qua một con trỏ lưu địa chỉ của biến const cần thay đổi
+```
+
+**Ví dụ 3:**
+
+```c
+#include <stdio.h>
+
+int main()
+{
+    const int var = 100;
+
+    // Compilation error: assignment of read-only variable
+    // 'var'
+    const int var = 100;
+    int *p = (int *)&var;
+    *p = 300;
+    printf("%d %d", *p, var);
+    return 0;
+}
+```
+
+**Output**
+
+```
+300 300
+```
+
+## 4.2. Extern
+
+```
+Từ khóa 'extern' được áp dụng cho biến và các hàm trong C.
+Nó có chức năng giúp mở rộng phạm vi hoạt động của biến hoặc hàm .
+```
+
+**Syntax**
+
+```
+extern data_type variable_name;
+```
+
+**Ví dụ 4:**
+
+```c
+#include <stdio.h>
+
+extern int a;
+
+int main()
+{
+    printf("%d", a);
+
+   return 0;
+}
+```
+
+**Tính chất của biến extern**
+
+```
+Khi sử dụng từ khóa extern, bạn muốn sử dụng lại một biến hoặc
+một hàm đã được khai báo và định nghĩa ở một file nào đó, biến
+extern hoặc hàm sẽ không được cấp phát một vùng nhớ mới.
+```

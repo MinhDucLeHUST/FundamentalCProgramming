@@ -40,7 +40,7 @@ int sum(int a, int b);
 int sum(int, int);
 ```
 
-![Các thành phần trong hàm](./Pictures/ImageFunction/function.png)
+![Các thành phần trong hàm](../Pictures/ImageFunction/function.png)
 
 **Note**
 
@@ -58,13 +58,13 @@ return_type **function_name**(para1, para2){
 //body of the function
 }
 
-![Định nghĩa hàm](./Pictures/ImageFunction/definitionFunction.png)
+![Định nghĩa hàm](../Pictures/ImageFunction/definitionFunction.png)
 
 ## Gọi hàm
 
 Gọi hàm là một câu lệnh mà thông báo tới trình biên dịch thực thi hàm mà chúng ta thực hiện. Chúng ta sẽ sử dụng tên hàm và các tham số trong hàm để thực hiện việc gọi hàm.
 
-![Cách hoạt động của hàm](./Pictures/ImageFunction/funcCall.png)
+![Cách hoạt động của hàm](../Pictures/ImageFunction/funcCall.png)
 
 ## Ví dụ về hàm trong C
 
