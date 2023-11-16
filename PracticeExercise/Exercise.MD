@@ -1,11 +1,545 @@
 # MỤC LỤC
 
+1. [Hello world](#question-1)
+2. [Variable](#question-2)
+3. [Primary data type](#question-3)
+4. [Array](#question-4)
 5. [Pointer](#question-5)
 6. [String](#question-6)
 7. [Struct](#question-7)
 8. [Function](#question-8)
 
+# <a id = "question-1"></a> Question 1: Hello world
+
+**Topic**
+Modified entry point like:
+
+```
+#include <stdio.h>
+
+int main(int n, char** args) {
+    printf("Number of Param %d\n", n);
+    for (int i = 0; i < n; i++) {
+        printf("param[%d] = %s\n", i, args[i]);
+    }
+}
+```
+
+Try to run, and watch the result in console screen and explain.
+**Output**
+
+```c
+PS C:\Users\duc5.le\Downloads\SelfStudyCProgramming\PracticeExercise> gcc main.c
+PS C:\Users\duc5.le\Downloads\SelfStudyCProgramming\PracticeExercise> .\a.exe param1 param2
+Number of Param 3
+param[0] = C:\Users\duc5.le\Downloads\SelfStudyCProgramming\PracticeExercise\a.exe
+param[1] = param1
+param[2] = param2
+PS C:\Users\duc5.le\Downloads\SelfStudyCProgramming\PracticeExercise>
+```
+
+**Explain**
+Hàm main có 2 tham số truyền vào đại diện cho các option được đưa vào khi run lệnh
+
+- n đại diện cho số lương tham số truyền vào
+- args là 1 con trỏ, trỏ tới 1 mảng chứa địa chỉ các tham số được truyền vào
+
+Nhờ vào các tham số này, bạn có thể truy cập và sử dụng các đối số dòng lệnh khi chạy chương trình.
+
+# <a id = "question-2"></a> Question 2: Variable
+
+## Q2.1
+
+**Topic**
+Implement the following
+
+```c
+#include <stdio.h>
+
+void calculate(int val) {
+    static int count = 10;
+    static int value;
+    printf("value = %d, count = %d\n", value, count++);
+    value = val;
+}
+int main(int n, char** args) {
+    int i, j;
+    calculate(i);
+    calculate(j);
+}
+```
+
+Look at the result and explain why?
+
+**Output**
+
+```c
+value = 0, count = 10
+value = 4194432, count = 11
+```
+
+**Explain**
+
+- Biến static là gì?
+  [Tham khảo tại đây!](https://github.com/MinhDucLeHUST/FundamentalCProgramming/blob/master/Day1_Compile%20Process_Variable_Types/Theory.MD#day-1-compile-process-variables-types)
+- Ở dòng đầu tiên, giá trị count = 10 vì là count ++, giá trị count sẽ tăng sau khi được gọi (nếu sử dụng ++count thì count = 11). Giá trị value = 0 vì được khai báo là biến static local (không gán giá trị).
+- Ở dòng thứ 2, giá trị count được tăng lên 1 đơn vị, giá trị value là 1 giá trị rác vì nó được gán với 1 biến local được gọi từ hàm _main_
+
+## Q2.2
+
+**Topic**
+For counting number of times a function has been called, we use three ways:
+
+- Global variable
+- Static variable inside function (static local)
+- Static variable outside function (static global)
+
+Implements those ways, and compare
+**Source**
+
+```c
+#include <stdio.h>
+
+int count_global = 10;
+static int count_static_global = 10;
+
+void calculate(int val) {
+    static int count_static_local = 10;
+    static int value;
+    printf("global variable: value = %d, count = %d\n", value, count_global++);
+    printf("global static variable: value = %d, count = %d\n", value, count_static_global++);
+    printf("local static variable: value = %d, count = %d\n", value, count_static_local++);
+    printf("=================================================\n");
+    value = val;
+}
+int main(int n, char** args) {
+    int i, j, k, l;
+    calculate(i);
+    calculate(j);
+    calculate(k);
+    calculate(l);
+}
+```
+
+**Output**
+
+```c
+global variable: value = 0, count = 10
+global static variable: value = 0, count = 10
+local static variable: value = 0, count = 10
+=================================================
+global variable: value = 4194432, count = 11
+global static variable: value = 4194432, count = 11
+local static variable: value = 4194432, count = 11
+=================================================
+global variable: value = 4182016, count = 12
+global static variable: value = 4182016, count = 12
+local static variable: value = 4182016, count = 12
+=================================================
+global variable: value = 0, count = 13
+global static variable: value = 0, count = 13
+local static variable: value = 0, count = 13
+=================================================
+```
+
+**Explain**
+
+- 3 loại biến kể trên chỉ khác nhau về phạm vi sử dụng, còn về khả năng lưu trữ giá trị sau mỗi lần gọi thì chúng như nhau
+
+## Q2.3
+
+**Topic**
+A programmer codes his program with 2 files: _main.c_ and _another.c_.
+
+- In _another.c_, he declares a global variable named myVar with initial value is 10.
+- In _main.c_, he needs to print value of myVar into screen. And he tries the following ways:
+
+  - Declare myVar in another.c, and in print it in main() in main.c
+  - Declare myVar in another.c. Declare again myVar in main.c and print it
+  - Declare myVar in another.c. In main.c, declare myVar with extern keyword, and print it.
+
+He’s got problem with the first and second way. The third is run well.
+Please explain what happen with the first and second; explain the reason why the third is OK and try to implement it.
+**Source**
+
+```c
+#include <stdio.h> //another.c
+
+int myVar = 10;
+```
+
+```c
+#include <stdio.h> //main.c
+
+int myVar;
+```
+
+```c
+#include <stdio.h> //another.c
+
+extern int myVar = 10;
+```
+
+**Expain**
+
+- Để sử dụng biến được khai báo trong file khác thì cần sử dụng từ khóa _extern_, nếu không chương trình không hiểu biến này được lấy từ đâu, kể cả bạn khai báo lại thì giá trị của chúng ko đồng bộ với nhau
+
+## Q2.4
+
+**Topic**
+
+Detect & solve problem of the following code:
+
+```c
+#include <stdio.h>
+const int xyz;
+int main(int n, char** args) {
+    xyz = 0;
+    printf("%d", xyz);
+}
+```
+
+**Explain**
+
+- Biến const được khai báo với 1 giá trị ko đổi, vì thế khi gán lại giá trị cho biến _xyz_ thì chương trình báo lỗi.
+
+# <a id = "question-3"></a> Question 3: Primary data type
+
+## Q3.1
+
+**Topic**
+Run the following code, and explain the result.
+
+- If replacing “char c” with “unsigned char c”, what will happen, and why?
+- Set “i” value to 260. Explain the result.
+- Supposing that “i” is always from 0 to 255. Try to give a solution to get j’s value equal to i’s value. (does not used unsigned char)
+
+```c
+#include <stdio.h>
+
+int main(int n, char** args) {
+    int i = 140;
+    char c = i;
+    int j = c;
+    printf("%d", j);
+}
+```
+
+**Explain**
+
+- Nếu thay char bằng unsigned char thì giá trị in ra là **140** thì range của unsigned char từ 0-255, còn char là từ -128 đến 127, vì thế khi quá giá trị 127, thì nó sẽ quay ngược lại neen có giá trị **-116**
+- Để giải quyết vấn đề thứ 3, sử phép toán tử **&** với **0xFF**, vì bản chất của 140 đưa về mã nhị phân, khi convert sang char thì nó sẽ được ép kiểu theo dải giá trị của char, vì thế để giá trị của i = j thì phải bảo toàn được giá trị nhị phân của nó.
+
+```c
+#include <stdio.h>
+
+int main(int n, char** args) {
+    int i = 140;
+    char c = i;
+    int j = c&0xFF;
+    printf("%d", j);
+}
+```
+
+## Q3.2
+
+**Topic**
+Run the following code, and explain the result.
+
+```c
+#include <stdio.h>
+#include "unistd.h"
+
+int main(int n, char** args) {
+    printf("Start loop\n");
+    int i = 5;
+    while (i = 5) {
+        printf("Inside loop\n");
+        i--;
+        printf("%d\n", i);
+        sleep(1);
+    }
+
+    printf("Outside loop\n");
+    return 0;
+}
+```
+
+**Explain**
+
+- Chương trình không thoát được vòng lặp vô hạn vì **i=5** là sai, sửa thành **i == 5**, khác nhau ở đây là 1 cái là phép gán và 1 cái là phép so sánh, sử dụng 1 dấu **=** thì chương trình hiểu bạn gán i = 5 thì chương trình của bạn không thoát được khỏi vòng while.
+- Cho dù có thay đổi giá trị của i bên trong while loop như nào đi chăng nữa thì nó vẫn thế.
+
+# <a id = "question-4"></a> Question 4: Array
+
+## Q4.1
+
+**Topic**
+
+- Write program to ask the user to type 10 integers of an array.
+- The program must compute and write the number of integers greater or equal to 10.
+
+**Source**
+
+```c
+#include <stdio.h>
+#define SIZE_ARRAY 10
+int main(int n, char** args) {
+    int array[SIZE_ARRAY];
+    int countEqual = 0;
+    int countGreater = 0;
+    printf("Insert 10 value for array!\n");
+    for (int i = 0; i < SIZE_ARRAY; i++) {
+        scanf("%d", &array[i]);
+    }
+    // scan value in array
+    for (int i = 0; i < SIZE_ARRAY; i++) {
+        if (array[i] == 10)
+            countEqual++;
+        else if (array[i] > 10)
+            countGreater++;
+    }
+    printf("Equal 10 has %d number in array\n", countEqual);
+    printf("Greater 10 has %d number in array\n", countGreater);
+    return 0;
+}
+```
+
+**Output**
+
+```c
+Insert 10 value for array!
+10
+20
+1
+3
+10
+11
+12
+10
+2
+1
+Equal 10 has 3 number in array
+Greater 10 has 3 number in array
+```
+
+## Q4.2
+
+**Topic**
+Write a program which takes 2 arrays of 10 integers each, a and b. c is an array with 20 integers. The program should put into c the appending of b to a, the first 10 integers of c from array a, the latter 10 from b. Then the program should display c.
+
+- Use memcpy
+- Without memcpy
+  **Source**
+
+```c
+#include <stdio.h>
+#include "string.h"
+
+#define SIZE_ARRAY 10
+int main(int n, char** args) {
+    int a[SIZE_ARRAY] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    int b[SIZE_ARRAY] = {11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+    int c[2 * SIZE_ARRAY];
+    for (int i = 0; i < SIZE_ARRAY; i++) {
+        memcpy(&c[i], &a[i], SIZE_ARRAY);
+    }
+    for (int i = 0; i < SIZE_ARRAY; i++) {
+        memcpy(&c[SIZE_ARRAY + i], &b[i], SIZE_ARRAY);
+    }
+    // scan value in array
+    for (int i = 0; i < 2 * SIZE_ARRAY; i++) {
+        printf("%d ", c[i]);
+    }
+
+    return 0;
+}
+```
+
+**Output**
+`1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 `
+
+## Q4.3
+
+**Topic**
+Explain the result:
+
+```c
+#include <stdio.h>
+
+int main(int n, char** args) {
+    int a[10];
+    for (int i = 0; i < 10; i++) {
+        a[i] = i * 10;
+    }
+    printf("a = 0x%x, *a =  0x%x, &a =  0x%x\n", a, *a, &a);
+    printf("(a+1) = 0x%x, *(a+1) = 0x%x, *a + 1 = 0x%x, &a+1 = 0x%x\n", (a + 1), *(a + 1), *a + 1, &a + 1);
+}
+```
+
+**Output**
+
+```c
+a = 0x61fef4, *a =  0x0, &a =  0x61fef4
+(a+1) = 0x61fef8, *(a+1) = 0xa, *a + 1 = 0x1, &a+1 = 0x61ff1c
+```
+
+**Explain**
+
+- a là địa chỉ của phần tử đầu tiên trong mảng, tương tự như &a
+- \*a là giá trị của phần tử đầu tiên trong mảng
+- (a+1) là địa chị của phần tử tiếp theo trong mảng, cách nhau 4 byte vì mảng có kiểu **int**
+- \*(a+1) là giá trị của phần tử tiếp theo trong mảng
+- \*a + 1 là giá trị của phần tử đấy tăng thêm 1 đơn vị
+- &a + 1 là địa chỉ ngay sau phần tử cuối cùng của mảng
+
+## Q4.4
+
+**Topic**
+Implement bubble sort algorithm (sort acceding) to sort an array from “offset” with “count” elements.
+For example: a[5] = {100, 4, 2, 6, 3} -> sort(a, 1, 4) -> {100, 2, 3, 4, 6}
+`void bubbleSort(int arr[], int offset, int count)`
+**Source**
+
+```c
+#include "stdio.h"
+#include "stdlib.h"
+
+void bubbleSort(int arr[], int offset, int count);
+void swap(int* a, int* b);
+void printArray(int arrayPrint[], int sizeArray);
+
+int main() {
+    int arrayNumber[] = {8, 54, 12, 43, 62, 48, 16, 1, 8, 9};
+    int sizeArray = sizeof(arrayNumber) / sizeof(arrayNumber[0]);
+    printf("*Original array: \n");
+    printArray(arrayNumber, sizeArray);
+
+    bubbleSort(arrayNumber, 1, sizeArray);
+
+    printf("*Sorted array: \n");
+    printArray(arrayNumber, sizeArray);
+    return 0;
+}
+
+void bubbleSort(int arr[], int offset, int count) {
+    for (int i = offset; i < count; i++) {
+        for (int j = count - 1; j > i; j--) {
+            if (arr[j] < arr[j - 1]) {
+                swap(&arr[j], &arr[j - 1]);
+            }
+        }
+    }
+}
+
+void swap(int* a, int* b) {
+    int t = *a;
+    *a = *b;
+    *b = t;
+}
+void printArray(int arrayPrint[], int sizeArray) {
+    for (int i = 0; i < sizeArray; i++) {
+        printf("%d ", arrayPrint[i]);
+    }
+    printf("\n");
+}
+
+```
+
+**Output**
+
+```c
+*Original array:
+8 54 12 43 62 48 16 1 8 9
+*Sorted array:
+8 1 8 9 12 16 43 48 54 62
+```
+
+## Q4.5
+
+**Topic**
+Implement functions to invert member of an array
+
+```c
+// generate output array from inverted input
+void Invert(int input[], int num_element, int output[])
+// invert input array
+void Invert(int input[], int num_element)
+```
+
+Note: after executing this function, input array is not changed
+**Source**
+
+```c
+void Invert(int input[], int num_element) {
+    for (int i = 0; i < num_element / 2; i++) {
+        swap(&input[i], &input[num_element - 1 - i]);
+    }
+}
+```
+
+**Output**
+
+```c
+*Original array:
+1 2 3 4 5 6 7 8
+*Inverted array:
+8 7 6 5 4 3 2 1
+```
+
 # <a id = "question-5"></a> Question 5: Pointer
+
+## Q5.1
+
+**Topic**
+Explain the result
+
+```c
+#include "stdio.h"
+#include "stdlib.h"
+typedef int *IntPtrType;
+int main() {
+    IntPtrType ptr_a, ptr_b, *ptr_c;
+    ptr_a = (int *)malloc(sizeof(int));
+    *ptr_a = 3;
+    ptr_b = ptr_a;
+    printf("*ptr_a = %d, * ptr_b = %d\n", *ptr_a, *ptr_b);
+
+    ptr_b = (int *)malloc(sizeof(int));
+    *ptr_b = 9;
+    printf("*ptr_a = %d, * ptr_b = %d\n", *ptr_a, *ptr_b);
+
+    *ptr_b = *ptr_a;
+    printf("*ptr_a = %d, * ptr_b = %d\n", *ptr_a, *ptr_b);
+
+    free(ptr_a);
+    ptr_a = ptr_b;
+    printf("*ptr_a = %d, *&*&*&*&*ptr_b = %d\n", *ptr_a, *&*&*&*&*ptr_b);
+
+    ptr_c = &ptr_a;
+    printf("*ptr_c = 0x%x, **ptr_c = %d\n", *ptr_c, **ptr_c);
+
+    free(ptr_a);
+    ptr_a = NULL;
+    return 0;
+}
+```
+
+**Output**
+
+```c
+*ptr_a = 3, * ptr_b = 3
+*ptr_a = 3, * ptr_b = 9
+*ptr_a = 3, * ptr_b = 3
+*ptr_a = 3, *&*&*&*&*ptr_b = 3
+*ptr_c = 0x662b98, **ptr_c = 3
+```
+
+**Explain**
+
+- Về mặt giá trị của ptr_a và ptr_b là cơ bản, đơn giản thì là các phép gán
+- Khi free(ptr_a), con trỏ ptr_a được giải phóng, sau đấy đc gán với ptr_b, lúc này 2 con trỏ ptr_a và ptr_b cùng trỏ đến 1 địa chỉ, chúng có cùng giá trị và địa chỉ trỏ đến.
+- `*&*&*&*&*ptr_b` = 3 vì _ kết hợp & thì thành không có ký tự gì, vì thế ở đây dễ hiểu `_&_&_&*&*ptr_b` chính và \*ptr_b
 
 ## Q5.2
 
@@ -687,11 +1221,11 @@ PS C:\Users\duc5.le\Downloads\SelfStudyCProgramming\PracticeExercise> .\a.exe
 ## Q8.3
 
 **Topic**
+Same requirement as Q8.2, however, sort function is implemented in another file:
+_Using extern_
 
 **Source**
 
 ```c
-
+extern void bubbleSort(int* arr, int sizeArr, int (*order)(int, int));
 ```
-
-**Ouput**

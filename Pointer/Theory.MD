@@ -25,6 +25,12 @@ Study time: 7/11/2023 - 8/11/2023
 Con trỏ trong C cũng là 1 biến bình thường, khác 1 chỗ là nó sẽ lưu trữ địa chỉ của 1 biến khác, tức là giá trị của chúng là 1 địa chỉ trong RAM.
 ![Minh họa](./ExamplePictures/pointer_4.png)
 
+```c
+p: địa chỉ mà con trỏ p trỏ tới
+*p: giá trị tại địa chỉ mà con trỏ p trỏ tới
+&p: địa chỉ của con trỏ p
+```
+
 - Khai báo con trỏ
   `<kiểu dữ liệu> * <tên biến>`
 - Kiểu con trỏ cần giống với kiểu biến mà nó trỏ tới
@@ -174,6 +180,30 @@ Thức tế rằng con trỏ hằng không nhất thiết phải trỏ đến v�
       printf("address of ptr: %p\n", *p_to_p);  // the address that p_to_p points
       return 0;
   }
+  ```
+
+  **Output**
+
+  ```c
+  value of number = 10
+  address of number = 0061FF18
+  *
+  value of ptr: 10
+  address of ptr: 0061FF14
+  address of number: 0061FF18
+  *
+  value of p_to_p: 10
+  address of p_to_p: 0061FF14
+  address of ptr: 0061FF18
+  ```
+
+  **Kết luận**
+
+  ```c
+  **p_to_p = *ptr = number
+  p_to_p = &ptr
+  *p_to_p = ptr = &number
+  (bởi vì * kết hợp với & thành ko có ký hiệu gì cả)
   ```
 
 - **Ví dụ 2:** sử dụng con trỏ cấp 2 để thay đổi địa chỉ trỏ đến của 1 con trỏ cấp 1
