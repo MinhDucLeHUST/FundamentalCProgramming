@@ -23,7 +23,7 @@ Study time: 7/11/2023 - 8/11/2023
 ## <a id ="ly_thuyet_chung_con_tro_cap_1"></a>Lý thuyết chung con trỏ cấp 1 (Pointer)
 
 Con trỏ trong C cũng là 1 biến bình thường, khác 1 chỗ là nó sẽ lưu trữ địa chỉ của 1 biến khác, tức là giá trị của chúng là 1 địa chỉ trong RAM.
-![Minh họa](./ExamplePictures/pointer_4.png)
+![Minh họa](./Pictures/ImagePointer/pointer_4.png)
 
 ```c
 p: địa chỉ mà con trỏ p trỏ tới
@@ -49,7 +49,7 @@ p: địa chỉ mà con trỏ p trỏ tới
     }
 ```
 
-![Minh họa](./ExamplePictures/pointer_5.png)
+![Minh họa](./Pictures/ImagePointer/pointer_5.png)
 
 - Mối quan hệ giữa _con trỏ_ và _mảng_
   Ta khai báo 1 con trỏ và 1 mảng 4 phần tử như sau:
@@ -60,7 +60,7 @@ p: địa chỉ mà con trỏ p trỏ tới
     // gán con trỏ p trỏ đến địa chỉ của phần tử đầu tiên của mảng
     // hoặc có thể gán như sau p = &x[0], 2 cách gán này như nhau.
   ```
-  ![Minh họa](./ExamplePictures/pointer_6.png)
+  ![Minh họa](./Pictures/ImagePointer/pointer_6.png)
   Với mảng trong ảnh phía trên, ta có:
   ```c
   &x[0] và p có cùng giá trị, và x[0] hay _p hay p[0] là tương đương nhau.
@@ -79,7 +79,7 @@ Con trỏ hằng sẽ trỏ đến 1 vùng nhớ hằng (const), tại đây ch�
   `const <type> * variable_name`
 - Ví dụ
   `const int * ptr`
-  ![Minh họa](./ExamplePictures/pointer_7.png)
+  ![Minh họa](./Pictures/ImagePointer/pointer_7.png)
   Ở ví dụ trên, con trỏ hằng _ptr_ được khai báo để trỏ tới 1 giá trị nguyên hằng. Điều này có nghĩa là giá trị mà _ptr_ trỏ tới ko thể thay đổi được, nhưng bạn có thể thay đổi vùng nhớ mà _ptr_ trỏ đến
 
 ### Hằng con trỏ
@@ -111,7 +111,7 @@ Hằng con trỏ chỉ có thể trỏ tới 1 vùng nhớ cố định, tức l
 
   ```
 
-  ![Minh họa](./ExamplePictures/pointer_8.png)
+  ![Minh họa](./Pictures/ImagePointer/pointer_8.png)
 
 ### Hằng con trỏ hằng
 
@@ -146,7 +146,7 @@ Thức tế rằng con trỏ hằng không nhất thiết phải trỏ đến v�
 ## <a id ="ly_thuyet"></a>Lý thuyết
 
 - Con trỏ cấp 2 là 1 con trỏ dùng để lưu trữ địa chỉ của 1 biến con trỏ khác
-  ![Minh họa](./ExamplePictures/pointer_1.png)
+  ![Minh họa](./Pictures/ImagePointer/pointer_1.png)
 
   Bản chất con trỏ cấp 2 cũng chỉ là con trỏ, chúng ta vẫn xuất được 3 giá trị liên quan tới con trỏ cấp 2 (giống như con trỏ cấp 1).
 
@@ -331,7 +331,7 @@ Mảng con trỏ trong C là một mảng các con trỏ. Mỗi phần tử tron
 
   ```
 
-![Mảng con trỏ](./ExamplePictures/pointer_2.png)
+![Mảng con trỏ](./Pictures/ImagePointer/pointer_2.png)
 
 - **Ví dụ 2:** sử dụng mảng con trỏ thay vì sử dụng dụng mảng 2 chiều
   Để lưu giá trị nhiều _string_ trong 1 _array_, trước đấy sử dụng mảng 2 chiều để lưu, như sau:
@@ -339,7 +339,7 @@ Mảng con trỏ trong C là một mảng các con trỏ. Mỗi phần tử tron
   `char name[3][10] = { "Duc", "Anh", "Ronaldo" };`
 
   _Việc khai báo như trên sẽ dẫn đến lãng phí bộ nhớ_
-  ![Mảng con trỏ](./ExamplePictures/pointer_3.png)
+  ![Mảng con trỏ](./Pictures/ImagePointer/pointer_3.png)
 
   _Vì thế ta sử dụng mảng con trỏ để lưu trữ các string đấy_
 
@@ -397,7 +397,7 @@ Mảng con trỏ trong C là một mảng các con trỏ. Mỗi phần tử tron
   `int (*fun)(int,int); //khai báo tường minh`
   hoặc
   `typedef int(*fun)(int,int); //khai báo không tường minh`
-  ![Minh họa](./ExamplePictures/pointer_9.png)
+  ![Minh họa](./Pictures/ImagePointer/pointer_9.png)
 
 ## <a id ="coding_con_tro_ham"></a>Coding
 

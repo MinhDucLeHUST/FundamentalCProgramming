@@ -7,8 +7,28 @@
 
 # <a id = "struct"></a> 1. Struct
 
-- Struct là 1 kiểu dữ liệu tự định nghĩa bao gồm nhiều thành phần có thể thuộc nhiều kiểu dữ liệu khác nhau.
-  ![Minh họa](./ExamplePictures/struct_1.png)
+Struct là 1 kiểu dữ liệu tự định nghĩa bao gồm nhiều thành phần có thể thuộc nhiều kiểu dữ liệu khác nhau.
+
+- Khai báo tường minh
+
+  ```c
+  struct structureName {
+    int variableName1;
+    char variableName2;
+    double variableName3;
+  };
+  ```
+
+- Khai báo không tường minh
+
+  ```c
+  typedef struct {
+    int variableName1;
+    char variableName2;
+    double variableName3;
+  } structName;
+  ```
+
 - Kích thước của struct bằng bội của phần tử có kích thước lớn nhất trong struct đó.
   **Ví dụ 1**
 
@@ -19,18 +39,18 @@
   }
   ```
 
-Ở **Ví dụ 1** trên, int là kiểu dữ liệu 4 bytes (lớn nhất trong struct info) nên kích thước là bội của 4.
-Vì kiểu struct sẽ cấp phát theo từng block, mỗi block có kích thước = 4 bytes, vì thế nó sẽ cấp phát 4 byte cho 'age', tiếp theo là 4 byte cho 'char' (vì ở block đầu tiên 'age' đã chiếm hết 4 byte) => nên kích thước của struct này là 8 bytes.
-Nếu khai báo kiểu 'char' trước thì kích thước struct vẫn vậy.
+  Ở **Ví dụ 1** trên, int là kiểu dữ liệu 4 bytes (lớn nhất trong struct info) nên kích thước là bội của 4.
+  Vì kiểu struct sẽ cấp phát theo từng block, mỗi block có kích thước = 4 bytes, vì thế nó sẽ cấp phát 4 byte cho 'age', tiếp theo là 4 byte cho 'char' (vì ở block đầu tiên 'age' đã chiếm hết 4 byte) => nên kích thước của struct này là 8 bytes.
+  Nếu khai báo kiểu 'char' trước thì kích thước struct vẫn vậy.
 
-```
-struct info{
-  char name[10];
-  int age;
-}
-```
+  ```c
+  struct info{
+    char name[10];
+    int age;
+  }
+  ```
 
-![Mô tả Union](./ExamplePictures/struct_4.png)
+  ![](./Pictures/./Pictures/ImageDataStructures/struct_4.png)
 
 **Ví dụ 2**
 
@@ -42,7 +62,7 @@ struct info{
 }
 ```
 
-![Mô tả Union](./ExamplePictures/struct_3.png)
+![](././Pictures/ImageDataStructures/struct_3.png)
 
 - Khi sử dụng struct ta thường gặp phải trường hợp **Phân mảnh bộ nhớ**
 
@@ -58,7 +78,8 @@ struct info{
 }
 ```
 
-![Mô tả Union](./ExamplePictures/struct_6.png)
+![](././Pictures/ImageDataStructures/struct_6.png)
+Khi ta sử dụng #pragma pack(n)
 
 ```c
 #pragma pack(1)
@@ -70,14 +91,40 @@ struct info{
 #pragma pack() //end pragma
 ```
 
-![Mô tả Union](./ExamplePictures/struct_5.png)
+![](././Pictures/ImageDataStructures/struct_5.png)
+**Ví dụ 4**
+
+```c
+#include "stdio.h"
+#pragma pack(2)
+typedef struct {
+    char a;
+    int b;
+    double c;
+
+} tinhsize_t;
+
+#pragma pack()
+
+int main() {
+    tinhsize_t size_cal;
+    printf("Size of struct = %ld\n", sizeof(size_cal));
+    return 0;
+}
+```
+
+**Output**
+
+```c
+Size of struct = 14
+```
 
 # <a id = "enum"></a> 2. Enum
 
 Enum là 1 kiểu dữ liệu người dùng tự định nghĩa, được sử dụng để gán tên cho các hằng số. Tác dụng của chúng giúp lập trình viên không nhầm lẫn và dễ kiểu soát khi làm việc với nhiều hằng số.
 
 - Có 2 kiểu khai báo cho Enum:
-  ![Kiểu khai báo](./ExamplePictures/enum_1.png)
+  ![Kiểu khai báo](././Pictures/ImageDataStructures/enum_1.png)
 - Nếu không gán giá trị cho các hằng số trong enum thì nó mặc định bắt đầu từ giá trị 0
 - Nếu đã gán 1 giá trị bất kỳ trong enum, các giá trị sau thì cộng thêm 1 đơn vị nhưng các giá trị đứng trước sẽ được gán giá trị theo index đầu tiên (được gán = 0 nếu chưa đc gán giá trị nào).
 - **Ví dụ**
@@ -106,13 +153,13 @@ Enum là 1 kiểu dữ liệu người dùng tự định nghĩa, được sử 
 Union là 1 kiểu dữ liệu trong C, cho phép lưu trữ các biến có các kiểu dữ liệu khác nhau trong cùng một vùng nhớ. Có thể định nghĩa Union với rất nhiều tham số, nhưng chỉ 1 thành phần chứa giá trị tại 1 thời điểm.
 
 - Union sẽ cùng lưu trữ giá trị của các biến tại cùng một ô nhớ
-  ![Mô tả Union](./ExamplePictures/union_3.png)
+  ![Mô tả Union](././Pictures/ImageDataStructures/union_3.png)
 - Có 2 kiểu khai báo đối với Union (giống với struct)
-  ![Kiểu khai báo](./ExamplePictures/union_1.png)
+  ![Kiểu khai báo](././Pictures/ImageDataStructures/union_1.png)
 - Kích thước của Union chính bằng kích thước kiểu dữ liệu có kích thước lớn nhất.
-  ![Kích thước trong Union](./ExamplePictures/union_2.png)
+  ![Kích thước trong Union](././Pictures/ImageDataStructures/union_2.png)
 - Từ đó, dễ dàng thấy được sự khác biệt giữa _struct_ và _union_
-  ![Kích thước trong Union](./ExamplePictures/union_4.png)
+  ![Kích thước trong Union](././Pictures/ImageDataStructures/union_4.png)
 - **Ví dụ**
   **Source**
 
@@ -157,7 +204,7 @@ Nếu có nhiều kiểu dữ liệu thì mỗi kiểu dữ liệu sẽ được
 
 - **Ví dụ 1:** cách cấp phát trong Bit fields
 
-  ![](./ExamplePictures/bit_field_1.png)
+  ![](././Pictures/ImageDataStructures/bit_field_1.png)
 
 - **Ví dụ 2**
   **Source**

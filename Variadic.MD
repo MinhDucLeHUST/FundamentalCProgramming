@@ -1,15 +1,18 @@
 # MỤC LỤC
 
-1. [Variadic Function](#variadic_function)
-   - [Khái niệm](#khai_niem_var_func)
-   - [Thực hành](#thuc_hanh_var_func)
-2. [Variadic Macro](#variadic_macro)
-   - [Khái niệm](#khai_niem_var_macro)
-   - [Thực hành](#thuc_hanh_var_macro)
+[1. Variadic Function](#variadic_function)
 
-# <a id = "variadic_function"></a>Variadic Function
+- [1.1. Khái niệm](#khai_niem_var_func)
+- [1.2. Thực hành](#thuc_hanh_var_func)
 
-## <a id = "khai_niem_var_func"></a>Khái niệm
+[2. Variadic Macro](#variadic_macro)
+
+- [2.1. Khái niệm](#khai_niem_var_macro)
+- [2.2. Thực hành](#thuc_hanh_var_macro)
+
+# <a id = "variadic_function"></a>1. Variadic Function
+
+## <a id = "khai_niem_var_func"></a>1.1. Khái niệm
 
 - Variadic function là hàm có thể đa dạng hóa tham số truyền vào mà không bị cố định số lượng tham số truyền vào.
 - Muốn sử dụng được _Variadic function_ cần phải **#include stdarg.h**
@@ -24,7 +27,7 @@
 - Syntax
   `<type> function_name (<type> variable_name, ...);`
 
-## <a id = "thuc_hanh_var_func"></a>Thực hành
+## <a id = "thuc_hanh_var_func"></a>1.2. Thực hành
 
 - **Ví dụ 1**
 
@@ -86,9 +89,9 @@
   }
   ```
 
-# <a id = "variadic_macro"></a> Variadic Macro
+# <a id = "variadic_macro"></a>2. Variadic Macro
 
-## <a id = "khai_niem_var_macro"> </a> Khái niệm
+## <a id = "khai_niem_var_macro"> </a>2.1. Khái niệm
 
 - Variadic macro giống như 1 macro có thể chứa được các tham số truyền vào 1 cách đa dạng.
 - Thành phần quan trọng nhất của **Variadic macro** là keyword **VA_ARGS**
@@ -110,4 +113,4 @@
 
 - **...** được dùng để chỉ ra rằng đó là tham số không bắt buộc. Tất cả các tham số sẽ được truyền tới keyword **VA_ARGS**
 
-## <a id = "thuc_hanh_var_macro"> </a> Thực hành
+## <a id = "thuc_hanh_var_macro"> </a>2.2. Thực hành

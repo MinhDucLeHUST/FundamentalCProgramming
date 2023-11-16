@@ -1,13 +1,13 @@
 # MỤC LỤC
 
-1. [Hello world](#question-1)
-2. [Variable](#question-2)
-3. [Primary data type](#question-3)
-4. [Array](#question-4)
-5. [Pointer](#question-5)
-6. [String](#question-6)
-7. [Struct](#question-7)
-8. [Function](#question-8)
+[Question 1: Hello world](#question-1)
+[Question 2: Variable](#question-2)
+[Question 3:Primary data type](#question-3)
+[Question 4: Array](#question-4)
+[Question 5: Pointer](#question-5)
+[Question 6: String](#question-6)
+[Question 7: Struct](#question-7)
+[Question 8: Function](#question-8)
 
 # <a id = "question-1"></a> Question 1: Hello world
 
@@ -610,7 +610,7 @@ Set x, y, z to three distinct values. Set p, q, r to the addresses of x, y, z re
 
 Draw diagrams to explain the results
 
-![](./Image/practice_1.png)
+![](./Pictures/ImageExercise/practice_1.png)
 **Source**
 
 ```c
@@ -748,7 +748,7 @@ p = 0x61ff10, *p = 0x4, &p = 0x61ff0c
 
 **Explain**
 
-![](./Image/practice_2.png)
+![](./Pictures/ImageExercise/practice_2.png)
 
 ## Q5.6
 
