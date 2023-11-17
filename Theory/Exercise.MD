@@ -1065,6 +1065,120 @@ After: My name is dlrow
 
 # <a id = "question-7"></a> Question 7: Struct
 
+## Q7.1
+
+**Topic**
+Date information includes:
+
+- Day of week : 0 for Sunday and 6 for Saturday (unsigned char)
+- Day: 0..31 (unsigned char)
+- Month: 0..12 (unsigned char)
+- Year: xxxx (unsigned int)
+
+Implement:
+
+- Define struct of date
+- Get date of system and save to a struct instance
+- Print struct information as format:
+  - dow, dd-mm-yyyy
+  - dd/mm/yyyy
+  - mm-dd-yyyy
+  - dow dd.mm.yy
+
+**Source**
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+typedef struct {
+    unsigned char dayOfWeek[10];
+    unsigned char day;
+    unsigned char month;
+    unsigned int year;
+} date_t;
+
+int main() {
+    date_t dayyyyy = {"Thusday", 16, 11, 2023};
+    printf("Today is %s, %d-%d-%d\n", dayyyyy.dayOfWeek, dayyyyy.day, dayyyyy.month, dayyyyy.year);
+    printf("Size of struct: %ld\n", sizeof(date_t));
+    return 0;
+}
+
+```
+
+**Output**
+
+```c
+Today is Thusday, 16-11-2023
+Size of struct: 16
+```
+
+## Q7.2
+
+**Topic**
+Use struct of 7.1. Implement:
+
+- (1) Print size of struct
+- (2) Declare year in second (dow, year, day, month), and print size of struct.
+  Draw diagrams to explain the result
+- (3) Build project with 1 byte alignment, print size of struct in two above cases and explain the result.
+
+**Source**
+
+```c
+//(1)
+printf("Size of struct: %ld\n", sizeof(date_t));
+
+//(2)
+typedef struct {
+    unsigned char dayOfWeek[10];
+    unsigned int year;
+    unsigned char day;
+    unsigned char month;
+} date_t;
+
+//(3)
+#pragma pack(1)
+typedef struct {
+    unsigned char dayOfWeek[10];
+    unsigned int year;
+    unsigned char day;
+    unsigned char month;
+} date_t;
+#pragma pack()
+```
+
+**Ouput**
+
+```c
+//(1)
+Size of struct: 16
+//(2)
+Size of struct: 20
+//(3)
+Size of struct: 16
+```
+
+## Q7.3
+
+**Topic**
+
+Student information include
+
+```c
+- name (char \*)
+- id (int)
+- score (float) (0 to 10)
+```
+
+Implement:
+
+- Struct of student
+- A class room is included ten students. (List of student is stored in an array).
+- Implement a function to input the student information (check if duplicated student ID, and value of score must be in range)
+- Sort list of student by score.
+
 # <a id = "question-8"></a> Question 8: Function
 
 ## Q8.1

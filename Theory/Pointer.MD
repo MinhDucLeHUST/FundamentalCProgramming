@@ -316,19 +316,14 @@ Mảng con trỏ trong C là một mảng các con trỏ. Mỗi phần tử tron
   int var1 = 10;
   int var2 = 20;
   int var3 = 30;
-
-      // array of pointers to integers
-      int* ptr_arr[3] = {&var1, &var2, &var3};
-
-      // traversing using loop
-      for (int i = 0; i < 3; i++) {
-          printf("Value of var %d: %d\tAddress: %p\n", i + 1, *ptr_arr[i], ptr_arr[i]);
-      }
-
-      return 0;
-
+  // array of pointers to integers
+  int* ptr_arr[3] = {&var1, &var2, &var3};
+  // traversing using loop
+  for (int i = 0; i < 3; i++) {
+      printf("Value of var %d: %d\tAddress: %p\n", i + 1, *ptr_arr[i], ptr_arr[i]);
   }
-
+  return 0;
+  }
   ```
 
 ![Mảng con trỏ](../Pictures/ImagePointer/pointer_2.png)

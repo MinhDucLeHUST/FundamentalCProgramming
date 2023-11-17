@@ -15,7 +15,7 @@
 ## <a id = "khai_niem_var_func"></a>1.1. Khái niệm
 
 - Variadic function là hàm có thể đa dạng hóa tham số truyền vào mà không bị cố định số lượng tham số truyền vào.
-- Muốn sử dụng được _Variadic function_ cần phải **#include stdarg.h**
+- Muốn sử dụng được _Variadic function_ cần phải **#include "stdarg.h"**
 - Một số phương thức hay được sử dụng:
   | Methods | Description |
   | --------- | ----------- |
@@ -114,3 +114,68 @@
 - **...** được dùng để chỉ ra rằng đó là tham số không bắt buộc. Tất cả các tham số sẽ được truyền tới keyword **VA_ARGS**
 
 ## <a id = "thuc_hanh_var_macro"> </a>2.2. Thực hành
+
+- **Ví dụ 1:**
+  **Source**
+
+  ```c
+  #include <stdio.h>
+  #include "stdarg.h"
+  #define SUM(...) sum(__VA_ARGS__)
+
+  int sum(int count, ...) {
+      int total = 0;
+      va_list args;
+      va_start(args, count);
+      for (int i = 0; i < count; i++) {
+          total += va_arg(args, int);
+      }
+      va_end(args);
+      return total;
+  }
+
+  int main() {
+      printf("Sum: %d\n", SUM(3, 1, 2, 3));
+      printf("Sum: %d\n", SUM(5, 1, 2, 3, 4, 5));
+      return 0;
+  }
+
+  ```
+
+  **Output**
+
+  ```c
+  Sum: 6
+  Sum: 15
+  ```
+
+- **Ví dụ 2:**
+  **Source**
+
+  ```c
+  #include <stdio.h>
+  #include "stdarg.h"
+
+
+  #define PRINT_VARIABLE_ARGS(...) printVariableArgs(__VA_ARGS__)
+
+  void printVariableArgs(const char* format, ...) {
+      va_list args;
+      va_start(args, format);
+      vprintf(format, args);
+      va_end(args);
+  }
+
+  int main() {
+      PRINT_VARIABLE_ARGS("Hello, %s! You are %d years old.\n", "Đức", 25);
+      PRINT_VARIABLE_ARGS("Your KPI is: %f\n", 9.31);
+      return 0;
+  }
+  ```
+
+  **Output**
+
+  ```c
+  Hello, Đức! You are 25 years old.
+  Your KPI is: 9.310000
+  ```
