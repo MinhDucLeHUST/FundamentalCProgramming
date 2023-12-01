@@ -1,14 +1,10 @@
 #include <stdio.h>
-#include <string.h>
 
-typedef struct {
-    char name[10];
-    int id;
-    float score;
-} student_t;
+#define PI 3.14
+#define SUM(a, b) a + b
 
 int main() {
-    student_t studentInfo;
-    char listStudent[10];
+    printf("Value of PI = %f\n", PI);
+    printf("Sum of 1 + 2 = %d\n", SUM(1, 2));
     return 0;
 }

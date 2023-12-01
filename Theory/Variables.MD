@@ -154,7 +154,8 @@ int main()
 ## 4.1. Const
 
 Từ khóa 'const' có thể được áp dụng trong việc khai báo biến với mục đích để đảm bảo giá trị của nó sẽ không bị thay đổi.
-
+**Syntax**
+`const <kiểu dữ liệu> <tên hằng> = <giá trị>`
 **Ví dụ 1:**
 `const int var = 100;`
 
@@ -253,4 +254,32 @@ int main()
 Khi sử dụng từ khóa extern, bạn muốn sử dụng lại một biến hoặc
 một hàm đã được khai báo và định nghĩa ở một file nào đó, biến
 extern hoặc hàm sẽ không được cấp phát một vùng nhớ mới.
+```
+
+## 4.3. Macro
+
+- Macro là 1 tên bất kỳ do lập trình viên đặt trỏ tới 1 khối lệnh thực hiện 1 chức năng bất kỳ.
+- Trong quá trình tiền xử lý (pre-processor), các macro được sử dụng trong chương trình được thay thế bởi các khối câu lệnh tương ứng.
+- Định nghĩa macro bằng lệnh `#define`, chúng ta có thể định nghĩa 1 macro giá trị hoặc 1 macro hàm.
+  **Ví dụ**
+
+```c
+#include <stdio.h>
+
+#define PI 3.14
+#define SUM(a, b) a + b
+
+int main() {
+    printf("Value of PI = %f\n", PI);
+    printf("Sum of 1 + 2 = %d\n", SUM(1, 2));
+    return 0;
+}
+
+```
+
+**Output**
+
+```c
+Value of PI = 3.140000
+Sum of 1 + 2 = 3
 ```
