@@ -9,7 +9,13 @@
 [Question 7: Struct](#question-7)
 [Question 8: Function](#question-8)
 
+<p align="center">
+  <img src="https://i.pinimg.com/originals/ec/af/d6/ecafd61fef5bc96b0595a4e5384a8bed.gif" />
+</p>
+
 # <a id = "question-1"></a> Question 1: Hello world
+
+## Q1.3
 
 **Topic**
 Modified entry point like:
@@ -45,6 +51,19 @@ Hàm main có 2 tham số truyền vào đại diện cho các option được �
 - args là 1 con trỏ, trỏ tới 1 mảng chứa địa chỉ các tham số được truyền vào
 
 Nhờ vào các tham số này, bạn có thể truy cập và sử dụng các đối số dòng lệnh khi chạy chương trình.
+
+## Q1.4
+
+**Topic**
+Code a program: make an infinity loop, limit frame-rate to 5. Each frame, print to console screen current time.
+HINT:
+
+- use clock(), time() of time.h;
+- use sleep() of windows.h
+
+**Output**
+
+Chưa làm!!
 
 # <a id = "question-2"></a> Question 2: Variable
 
@@ -874,11 +893,6 @@ int main() {
 
 - sizeof(a) hay sizeof(b) không trả về số lượng phần tử được cấp phát mà trả về số bytes được cấp phát
 - vì thế ta khai báo 1 kiểu int rồi đưa giá trị trả về của sizeof về kiểu 'int' để khớp với biến i trong vòng for.
-  **Output**
-
-```
-
-```
 
 # <a id = "question-6"></a> Question 6: String
 
@@ -1361,3 +1375,11 @@ _Using extern_
 ```c
 extern void bubbleSort(int* arr, int sizeArr, int (*order)(int, int));
 ```
+
+<!-- End -->
+
+<span style="color: blue;">Cảm ơn các bạn đã đọc bài viết, tài liệu được mình tổng hợp khi tự học, có gì còn thiếu sót hãy thông cảm cho mình nha. Good bye, see yaaa !</span>
+
+<p align="center">
+  <img src="https://www.troublefreepool.com/media/hello-gif.3474/full" />
+</p>
