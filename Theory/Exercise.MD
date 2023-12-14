@@ -796,21 +796,25 @@ int main() {
 
 **Topic**
 
-```
- Why should we use delete?
- When we use delete?
- Difference between delete and delete[]. Write a demo
-```
+**5.7.1. Why should we use delete?**
 
-**Source**
+Tham khảo: [tại đây](https://www.geeksforgeeks.org/delete-and-free-in-cpp/)
 
-```c
+**5.7.2. When we use delete?**
 
-```
+Trong C++, bạn nên sử dụng toán tử delete khi bạn đã cấp phát bộ nhớ động bằng toán tử new và bạn đã hoàn thành việc sử dụng bộ nhớ đó. Việc sử dụng delete giúp giải phóng bộ nhớ và trả về nó cho hệ thống, giúp tránh rò rỉ bộ nhớ và tối ưu hóa việc quản lý bộ nhớ.
 
-**Output**
+**5.7.3. Difference between delete and delete[]. Write a demo**
 
-```
+`delete` được sử dụng để giải phóng bộ nhớ cho một đối tượng duy nhất được tạo ra bằng `new`.
+`delete[]` được sử dụng để giải phóng bộ nhớ cho một mảng các đối tượng được tạo ra bằng `new[]`.
+
+```c++
+int* singleValue = new int; // Cấp phát bộ nhớ cho một số nguyên duy nhất
+delete singleValue; // Giải phóng bộ nhớ bằng delete
+
+int* arrayValues = new int[5]; // Cấp phát bộ nhớ cho một mảng các số nguyên
+delete[] arrayValues; // Giải phóng bộ nhớ bằng delete[]
 
 ```
 
