@@ -732,7 +732,7 @@ int main() {
     */
     printf("p = 0x%x, *p = 0x%x, &p = 0x%x\n", p, *p, &p);
     printf("(a+1) = 0x%x, *(a+1) = 0x%x, *a+1 = 0x%x, &a+1 = 0x%x\n", (a + 1), *(a + 1), *a + 1, &a + 1);
-    printf("(p+1) = 0x%x, *(p+1) = 0x%x, *p+1 = 0x%x, &p + 1 = 0x%x\n", (p + 1), *(p + 1), *p + 1, &p + 2);
+    printf("(p+1) = 0x%x, *(p+1) = 0x%x, *p+1 = 0x%x, &p + 1 = 0x%x\n", (p + 1), *(p + 1), *p + 1, &p + 1);
     return 0;
 }
 ```
@@ -750,33 +750,47 @@ p = 0x61ff10, *p = 0x4, &p = 0x61ff0c
 
 ![](../Pictures/ImageExercise/practice_2.png)
 
+- Kích thước con trỏ còn tùy thuộc vào trình compile sẽ đưa ra kích thước cụ thể, như trình compiler của mình dùng theo Mingw64 thì kích thước con trỏ int = 4 bytes.
+
 ## Q5.6
 
 **Topic**
 
-- Detect and solve problems of following program:
-  ```
-  void main() {
-      int a[4] = {1, 2, 3, 4};
-      int *p = a;
-      int *p2 = new int;
-      delete p;
-      delete a;
-      delete p2;
-  }
-  ```
-
-**Source**
+Detect and solve problems of following program:
 
 ```c
+void main() {
+    int a[4] = {1, 2, 3, 4};
+    int *p = a;
+    int *p2 = new int;
+    delete p;
+    delete a;
+    delete p2;
+}
+```
+
+**Source after editing**
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a[4] = {1, 2, 3, 4};
+    int *p = new int;
+    *p = 10;
+    delete p;
+    return 0;
+}
 
 ```
 
-**Output**
+**Explain**
 
-```
-    Chưa làm được
-```
+- `delete p;`
+  Command này cố gắng giải phóng bộ nhớ cho con trỏ p, nhưng p không phải là một con trỏ được cấp phát động bằng toán tử new, mà là một con trỏ trỏ đến mảng tĩnh. Việc sử dụng delete trên một con trỏ không được cấp phát động là không đúng.
+- `delete a;`
+  Command này cố gắng giải phóng bộ nhớ cho mảng a, nhưng mảng không được cấp phát động bằng Toán tử new, do đó việc sử dụng delete trên một mảng tĩnh cũng là không đúng.
 
 ## Q5.7
 

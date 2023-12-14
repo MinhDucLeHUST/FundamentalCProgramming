@@ -3,6 +3,9 @@
     "*.json": "jsonc",
     "stdlib.h": "c",
     "stdio.h": "c",
-    "string.h": "c"
+    "string.h": "c",
+    "ostream": "cpp",
+    "iostream": "cpp",
+    "new": "cpp"
   }
 }
