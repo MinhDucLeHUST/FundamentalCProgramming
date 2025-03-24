@@ -1,0 +1,3 @@
+C:/Users/duc5.le/Downloads/Study/FundamentalCProgramming/Source/build/CMakeFiles/cmakebuild.dir
+C:/Users/duc5.le/Downloads/Study/FundamentalCProgramming/Source/build/CMakeFiles/edit_cache.dir
+C:/Users/duc5.le/Downloads/Study/FundamentalCProgramming/Source/build/CMakeFiles/rebuild_cache.dir

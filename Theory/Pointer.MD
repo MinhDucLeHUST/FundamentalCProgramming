@@ -1,8 +1,3 @@
-```python
-Author: Lê Minh Đức (duc5.le)
-Study time: 7/11/2023 - 8/11/2023
-```
-
 # Mục lục
 
 1. [Con trỏ cấp 1 (Pointer)](#con_tro_cap_1)
